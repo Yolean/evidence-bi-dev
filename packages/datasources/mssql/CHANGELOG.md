@@ -1,5 +1,11 @@
 # @evidence-dev/mssql
 
+## 1.1.5
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 1.1.4
 
 ### Patch Changes

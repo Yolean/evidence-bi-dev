@@ -1,6 +1,6 @@
 {
-	"name": "@evidence-dev/mssql",
-	"version": "1.1.4",
+	"name": "@yolean/evidence-mssql",
+	"version": "1.1.5",
 	"description": "Microsoft Server SQL driver for Evidence projects",
 	"main": "index.cjs",
 	"author": "evidence.dev",
@@ -9,7 +9,7 @@
 		"test": "uvu test test.js"
 	},
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:*",
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
 		"mssql": "^11.0.1"
 	},
 	"devDependencies": {

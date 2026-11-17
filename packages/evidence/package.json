@@ -1,6 +1,6 @@
 {
-	"name": "@evidence-dev/evidence",
-	"version": "40.1.8",
+	"name": "@yolean/evidence",
+	"version": "40.1.9",
 	"description": "dependencies for evidence projects",
 	"type": "module",
 	"keywords": [
@@ -30,18 +30,18 @@
 		"cli.js"
 	],
 	"devDependencies": {
-		"@evidence-dev/component-utilities": "workspace:*",
-		"@evidence-dev/core-components": "workspace:*",
-		"@evidence-dev/tailwind": "workspace:*",
+		"@evidence-dev/component-utilities": "workspace:@yolean/evidence-component-utilities@*",
+		"@evidence-dev/core-components": "workspace:@yolean/evidence-core-components@*",
+		"@evidence-dev/tailwind": "workspace:@yolean/evidence-tailwind@*",
 		"@sveltejs/kit": "2.8.4",
 		"svelte": "4.2.19",
 		"vite": "5.4.21"
 	},
 	"dependencies": {
-		"@evidence-dev/preprocess": "workspace:*",
-		"@evidence-dev/sdk": "workspace:*",
-		"@evidence-dev/telemetry": "workspace:*",
-		"@evidence-dev/universal-sql": "workspace:*",
+		"@evidence-dev/preprocess": "workspace:@yolean/evidence-preprocess@*",
+		"@evidence-dev/sdk": "workspace:@yolean/evidence-sdk@*",
+		"@evidence-dev/telemetry": "workspace:@yolean/evidence-telemetry@*",
+		"@evidence-dev/universal-sql": "workspace:@yolean/evidence-universal-sql@*",
 		"@sveltejs/adapter-static": "3.0.1",
 		"@sveltejs/kit": "2.8.4",
 		"chalk": "^5.3.0",

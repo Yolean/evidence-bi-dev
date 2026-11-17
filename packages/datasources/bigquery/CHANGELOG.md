@@ -1,5 +1,11 @@
 # @evidence-dev/bigquery
 
+## 2.0.13
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 2.0.12
 
 ### Patch Changes

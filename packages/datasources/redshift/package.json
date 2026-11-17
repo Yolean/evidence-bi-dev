@@ -1,13 +1,13 @@
 {
-	"name": "@evidence-dev/redshift",
-	"version": "1.0.10",
+	"name": "@yolean/evidence-redshift",
+	"version": "1.0.11",
 	"description": "Redshift driver for Evidence projects",
 	"main": "index.cjs",
 	"author": "Archie Wood",
 	"license": "MIT",
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:*",
-		"@evidence-dev/postgres": "workspace:*"
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
+		"@evidence-dev/postgres": "workspace:@yolean/evidence-postgres@*"
 	},
 	"type": "module",
 	"evidence": {

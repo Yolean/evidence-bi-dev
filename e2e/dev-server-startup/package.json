@@ -16,9 +16,9 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "workspace:*",
-    "@evidence-dev/duckdb": "workspace:*",
-    "@evidence-dev/evidence": "workspace:*",
+    "@evidence-dev/core-components": "workspace:@yolean/evidence-core-components@*",
+    "@evidence-dev/duckdb": "workspace:@yolean/evidence-duckdb@*",
+    "@evidence-dev/evidence": "workspace:@yolean/evidence@*",
     "vite": "5.4.21",
     "vitest": "^2.1.9"
   },

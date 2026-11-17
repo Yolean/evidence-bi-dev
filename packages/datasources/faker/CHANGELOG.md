@@ -1,5 +1,11 @@
 # @evidence-dev/faker-datasource
 
+## 2.1.6
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 2.1.5
 
 ### Patch Changes

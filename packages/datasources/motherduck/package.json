@@ -1,6 +1,6 @@
 {
-	"name": "@evidence-dev/motherduck",
-	"version": "1.0.6",
+	"name": "@yolean/evidence-motherduck",
+	"version": "1.0.7",
 	"description": "",
 	"main": "index.cjs",
 	"keywords": [
@@ -12,8 +12,8 @@
 	"author": "Brian Donald",
 	"license": "MIT",
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:*",
-		"@evidence-dev/duckdb": "workspace:*"
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
+		"@evidence-dev/duckdb": "workspace:@yolean/evidence-duckdb@*"
 	},
 	"evidence": {
 		"datasources": [

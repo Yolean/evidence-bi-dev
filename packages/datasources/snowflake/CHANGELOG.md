@@ -1,5 +1,11 @@
 # @evidence-dev/snowflake
 
+## 1.2.5
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 1.2.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @evidence-dev/tailwind
 
+## 3.1.5
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 3.1.4
 
 ### Patch Changes

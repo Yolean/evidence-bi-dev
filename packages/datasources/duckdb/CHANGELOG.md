@@ -1,5 +1,11 @@
 # @evidence-dev/duckdb
 
+## 2.0.2
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 2.0.1
 
 ### Patch Changes
@@ -13,10 +19,12 @@
 ### Major Changes
 
 - b28f63f23: Update DuckDB to latest packages:
+
   - Switch to @duckdb/node-api from duckdb-async
   - Update duckdb-wasm to latest release
 
   This release also has small data fixes across several packages:
+
   - Better handling of NULL values when discovering column types
   - Fix batch processing of parquet files
   - Fix error with temporary parquet files when reloading data in dev environment

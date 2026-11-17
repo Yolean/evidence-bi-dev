@@ -1,5 +1,11 @@
 # @evidence-dev/mysql
 
+## 1.1.7
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 1.1.6
 
 ### Patch Changes

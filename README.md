@@ -1,3 +1,10 @@
+> **Yolean/evidence-bi-dev** is an unofficial copy of the legacy Evidence framework,
+> from upstream's `legacy` branch after it was frozen at `@evidence-dev/evidence@40.1.8`.
+> It is not affiliated with or endorsed by Evidence. The packages are published as
+> `@yolean/evidence` and `@yolean/evidence-<name>`; code keeps importing `@evidence-dev/*`,
+> so consumers install them through npm aliases, for example
+> `"@evidence-dev/evidence": "npm:@yolean/evidence@^40.1.9"`.
+
 <div id="top" align="center">
 
 <picture>

@@ -1,5 +1,11 @@
 # @evidence-dev/component-utilities
 
+## 4.0.14
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 4.0.13
 
 ### Patch Changes

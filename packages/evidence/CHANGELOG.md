@@ -1,5 +1,11 @@
 # @evidence-dev/evidence
 
+## 40.1.9
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 40.1.8
 
 ### Patch Changes

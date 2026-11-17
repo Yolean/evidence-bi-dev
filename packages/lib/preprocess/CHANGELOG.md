@@ -1,5 +1,11 @@
 # @evidence-dev/preprocess
 
+## 6.0.8
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 6.0.7
 
 ### Patch Changes

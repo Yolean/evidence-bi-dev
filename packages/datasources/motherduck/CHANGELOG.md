@@ -1,5 +1,11 @@
 # @evidence-dev/motherduck
 
+## 1.0.7
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 1.0.6
 
 ### Patch Changes

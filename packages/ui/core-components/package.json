@@ -1,5 +1,5 @@
 {
-	"name": "@evidence-dev/core-components",
+	"name": "@yolean/evidence-core-components",
 	"license": "MIT",
 	"scripts": {
 		"build": "vite build && npm run package",
@@ -24,7 +24,7 @@
 	"main": "./dist/index.js",
 	"type": "module",
 	"types": "./dist/index.d.ts",
-	"version": "5.4.2",
+	"version": "5.4.3",
 	"evidence": {
 		"components": true
 	},
@@ -39,9 +39,9 @@
 		"@codemirror/view": "^6.26.3",
 		"@docsearch/css": "^3.6.0",
 		"@docsearch/js": "^3.6.0",
-		"@evidence-dev/component-utilities": "workspace:*",
-		"@evidence-dev/icons": "workspace:*",
-		"@evidence-dev/tailwind": "workspace:*",
+		"@evidence-dev/component-utilities": "workspace:@yolean/evidence-component-utilities@*",
+		"@evidence-dev/icons": "workspace:@yolean/evidence-icons@*",
+		"@evidence-dev/tailwind": "workspace:@yolean/evidence-tailwind@*",
 		"@internationalized/date": "^3.5.4",
 		"@steeze-ui/radix-icons": "^1.1.2",
 		"@steeze-ui/simple-icons": "^1.7.1",
@@ -73,9 +73,9 @@
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.6.1",
-		"@evidence-dev/faker-datasource": "workspace:*",
-		"@evidence-dev/sdk": "workspace:*",
-		"@evidence-dev/universal-sql": "workspace:*",
+		"@evidence-dev/faker-datasource": "workspace:@yolean/evidence-faker-datasource@*",
+		"@evidence-dev/sdk": "workspace:@yolean/evidence-sdk@*",
+		"@evidence-dev/universal-sql": "workspace:@yolean/evidence-universal-sql@*",
 		"@fakerjs/faker": "^3.0.0",
 		"@storybook/addon-essentials": "^8.3.4",
 		"@storybook/addon-interactions": "^8.3.4",

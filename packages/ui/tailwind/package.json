@@ -1,6 +1,6 @@
 {
-	"name": "@evidence-dev/tailwind",
-	"version": "3.1.4",
+	"name": "@yolean/evidence-tailwind",
+	"version": "3.1.5",
 	"description": "",
 	"keywords": [],
 	"author": "",
@@ -10,7 +10,7 @@
 		"check": "tsc --noEmit -p tsconfig.json"
 	},
 	"dependencies": {
-		"@evidence-dev/sdk": "workspace:^",
+		"@evidence-dev/sdk": "workspace:@yolean/evidence-sdk@^",
 		"chroma-js": "^2.4.2",
 		"lodash": "^4.17.21",
 		"tailwindcss": "3.4.18",

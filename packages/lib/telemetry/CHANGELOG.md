@@ -1,5 +1,11 @@
 # @evidence-dev/telemetry
 
+## 2.1.4
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 2.1.3
 
 ### Patch Changes

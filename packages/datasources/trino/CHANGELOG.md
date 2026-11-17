@@ -1,5 +1,11 @@
 # @evidence-dev/trino
 
+## 1.0.12
+
+### Patch Changes
+
+- First release under the @yolean npm scope, from the frozen upstream legacy framework at 40.1.8
+
 ## 1.0.11
 
 ### Patch Changes
