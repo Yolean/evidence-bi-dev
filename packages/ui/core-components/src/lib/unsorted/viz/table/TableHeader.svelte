@@ -53,7 +53,7 @@
 					<th
 						class="index w-[2%] {compact ? 'text-xs py-[1px] px-[4px]' : 'py-[2px]'}"
 						style:background-color={headerColor}
-					/>
+					></th>
 				{/if}
 				{#each columnsWithGroupSpan as column}
 					{#if column.colGroup && column.isNewGroup}
@@ -84,7 +84,7 @@
 				role="columnheader"
 				class="index w-[2%] {compact ? 'text-xs py-[1px] px-[4px]' : 'py-[2px] px-[8px]'}"
 				style:background-color={headerColor}
-			/>
+			></th>
 		{/if}
 		{#each orderedColumns as column}
 			<th

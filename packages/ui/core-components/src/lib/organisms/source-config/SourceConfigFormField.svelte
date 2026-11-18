@@ -186,7 +186,7 @@
 			/>
 		{:else if spec.type === 'select' && Array.isArray(spec.options)}
 			<select disabled={fieldDisabled} bind:value={fieldValue}>
-				<option disabled={spec.required} value={undefined} />
+				<option disabled={spec.required} value={undefined}></option>
 				{#each spec.options as option}
 					{#if typeof option === 'string'}
 						<option value={option}>{option}</option>

@@ -48,7 +48,7 @@
 			? 'modal-exit'
 			: 'modal-enter'}"
 	>
-		<div class="fixed inset-0 bg-base-100/70" />
+		<div class="fixed inset-0 bg-base-100/70"></div>
 		<div
 			class="border border-base-300 bg-base-100 w-4/5 max-w-lg mx-auto rounded-lg shadow-lg z-50 overflow-y-auto font-ui"
 		>

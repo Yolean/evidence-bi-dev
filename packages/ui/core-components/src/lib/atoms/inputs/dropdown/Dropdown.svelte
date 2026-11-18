@@ -371,12 +371,12 @@
 							</Command.Group>
 							{#if multiple}
 								{#if !disableSelectAll}
-									<div class="-mx-1 h-px bg-base-300" />
+									<div class="-mx-1 h-px bg-base-300"></div>
 									<Command.Item class="justify-center text-center" onSelect={selectAll}>
 										Select all
 									</Command.Item>
 								{/if}
-								<div class="-mx-1 h-px bg-base-300" />
+								<div class="-mx-1 h-px bg-base-300"></div>
 								<Command.Item
 									disabled={$selectedOptions.length === 0}
 									class="justify-center text-center"

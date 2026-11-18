@@ -91,7 +91,7 @@
 		on:keypress={() => (mobileSidebarOpen = false)}
 		role="button"
 		tabindex="-1"
-	/>
+	></div>
 	<div
 		class="bg-base-100 border-r border-base-200 shadow-lg fixed inset-0 z-50 flex sm:w-72 h-screen w-screen flex-col overflow-hidden select-none"
 		in:fly|local={{ x: -50, duration: 300 }}
@@ -354,7 +354,7 @@
 													class="absolute top-0 -left-[1px] w-[1px] h-full bg-primary"
 													in:send={{ key: 'trigger' }}
 													out:receive={{ key: 'trigger' }}
-												/>
+												></div>
 											{/if}
 										</div>
 									{/if}

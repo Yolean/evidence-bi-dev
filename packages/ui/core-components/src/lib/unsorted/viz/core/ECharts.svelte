@@ -91,7 +91,7 @@
 					seriesColors: $seriesColorsStore,
 					theme: $activeAppearance
 				}}
-			/>
+			></div>
 		{/if}
 	{/if}
 
@@ -132,9 +132,9 @@
 						stroke-linecap="round"
 						stroke-linejoin="round"
 					>
-						<rect x="3" y="3" width="18" height="18" rx="2" />
-						<circle cx="8.5" cy="8.5" r="1.5" />
-						<path d="M20.4 14.5L16 10 4 20" />
+						<rect x="3" y="3" width="18" height="18" rx="2"></rect>
+						<circle cx="8.5" cy="8.5" r="1.5"></circle>
+						<path d="M20.4 14.5L16 10 4 20"></path>
 					</svg>
 				</DownloadData>
 			{/if}
@@ -181,7 +181,7 @@
 			theme: $activeAppearance,
 			backgroundColor: $theme.colors['base-100']
 		}}
-	/>
+	></div>
 {/if}
 
 <style>

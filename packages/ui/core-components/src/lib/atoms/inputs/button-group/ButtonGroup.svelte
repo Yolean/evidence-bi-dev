@@ -163,7 +163,7 @@
 					{#if hasQuery}
 						<QueryLoad data={query} let:loaded>
 							<svelte:fragment slot="skeleton">
-								<div class="h-8 min-w-24 w-full max-width-24 block animate-pulse bg-base-300" />
+								<div class="h-8 min-w-24 w-full max-width-24 block animate-pulse bg-base-300"></div>
 							</svelte:fragment>
 							<svelte:fragment>
 								{#each loaded as { label, value }}

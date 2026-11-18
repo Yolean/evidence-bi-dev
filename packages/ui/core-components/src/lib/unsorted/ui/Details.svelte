@@ -28,7 +28,7 @@
 			class="text-sm text-base-content-muted cursor-pointer inline-flex gap-2"
 			on:click={() => (open = !open)}
 		>
-			<span class={open ? 'marker rotate-marker' : 'marker'} />
+			<span class={open ? 'marker rotate-marker' : 'marker'}></span>
 			<span> {title} </span>
 		</button>
 

@@ -184,5 +184,5 @@
 		bind:this={chartContainer}
 		class="inline-block align-baseline overflow-visible"
 		style="width: {width}px; height: {height}px;"
-	/>
+	></div>
 {/if}

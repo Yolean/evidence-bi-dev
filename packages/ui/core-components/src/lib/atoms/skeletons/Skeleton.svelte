@@ -12,5 +12,5 @@
 
 <div class={cn('animate-pulse h-full w-full mt-2 mb-4', className)} in:fade|local>
 	<span class="sr-only">Loading...</span>
-	<div class="h-full w-full rounded-md bg-base-300" />
+	<div class="h-full w-full rounded-md bg-base-300"></div>
 </div>

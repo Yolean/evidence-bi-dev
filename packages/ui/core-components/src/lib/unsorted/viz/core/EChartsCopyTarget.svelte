@@ -63,7 +63,7 @@
 			seriesOptions,
 			seriesColors: $seriesColorsStore
 		}}
-	/>
+	></div>
 {:else if printing}
 	{#if inGrid}
 		<div
@@ -87,7 +87,7 @@
 				extraHeight,
 				width: portraitWidth
 			}}
-		/>
+		></div>
 		<div
 			class="chart hidden md:block"
 			style="
@@ -109,7 +109,7 @@
 				extraHeight,
 				width: landscapeWidth
 			}}
-		/>
+		></div>
 	{:else}
 		<div
 			class="chart md:hidden"
@@ -132,7 +132,7 @@
 				extraHeight,
 				width: 650
 			}}
-		/>
+		></div>
 
 		<div
 			class="chart hidden md:block"
@@ -155,6 +155,6 @@
 				extraHeight,
 				width: 841
 			}}
-		/>
+		></div>
 	{/if}
 {/if}

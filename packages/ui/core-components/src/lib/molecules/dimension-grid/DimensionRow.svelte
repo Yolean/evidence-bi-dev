@@ -19,7 +19,7 @@
 				'bg-base-200': isSelected
 			}
 		)}
-	/>
+	></div>
 	<div
 		class={cn(
 			'bg-primary/10 dark:bg-primary/30 group-hover:bg-primary/15 dark:group-hover:bg-primary/40 absolute inset-y-0 left-0 z-[-10]',
@@ -41,7 +41,7 @@
 				'%;' +
 				'transition: width 300ms 300ms, background-color 200ms 0ms; '
 			: 'width: 100%;'}
-	/>
+	></div>
 
 	<span
 		class={cn(

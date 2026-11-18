@@ -17,14 +17,14 @@
 			<span class="font-mono text-xs">[my-query].id</span>
 		</Hint>
 		<span>{query.id}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md">
 			<span class="font-bold" slot="handle">Input Text Hash</span>
 			<span class="font-mono text-xs">[my-query].hash</span>
 		</Hint>
 		<span>{query.hash}</span>
-		<span />
+		<span></span>
 
 		<span class="font-bold">
 			<Hint maxWidth="md" direction="left">
@@ -46,14 +46,14 @@
 			<span class="font-mono text-xs">[my-query].length</span>
 		</Hint>
 		<span>{query.length}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md">
 			<span class="font-bold" slot="handle">Ready</span>
 			<span class="font-mono text-xs">[my-query].ready</span>
 		</Hint>
 		<span>{query.ready}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md" direction="left">
 			<span class="font-bold" slot="handle">Waiting for Input</span>

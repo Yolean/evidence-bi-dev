@@ -9,5 +9,5 @@
 	<div
 		class="bg-base-100 rounded-md max-w-[100%]"
 		style="height:{height}; margin-top: 15px; margin-bottom: 31px;"
-	/>
+	></div>
 </div>

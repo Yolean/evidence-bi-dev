@@ -43,12 +43,10 @@
 	<DateInput {...args} name="dateInput" />
 </Story>
 <Story name="dateInput_range" let:args>
-	<h1>
-		Input Store:
-		<h2>value: {$inputStore.dateInput_range.value}</h2>
-		<h2>start: {$inputStore.dateInput_range.start}</h2>
-		<h2>end: {$inputStore.dateInput_range.end}</h2>
-	</h1>
+	<h1>Input Store:</h1>
+	<h2>value: {$inputStore.dateInput_range.value}</h2>
+	<h2>start: {$inputStore.dateInput_range.start}</h2>
+	<h2>end: {$inputStore.dateInput_range.end}</h2>
 	<DateInput {...args} name="dateInput_range" range />
 </Story>
 <Story name="Name Error" let:args>

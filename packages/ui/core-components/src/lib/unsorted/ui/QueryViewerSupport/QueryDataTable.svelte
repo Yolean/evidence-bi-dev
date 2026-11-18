@@ -55,7 +55,7 @@
 		<table in:blur>
 			<thead>
 				<tr>
-					<th class="index" style="width:10%" />
+					<th class="index" style="width:10%"></th>
 					{#each columnSummary as column}
 						<th
 							class={column.type}
@@ -66,9 +66,9 @@
 							{column.id}
 						</th>
 					{/each}
-				</tr><tr />
+				</tr><tr></tr>
 				<tr class="type-indicator">
-					<th class="index type-indicator" style="width:10%" />
+					<th class="index type-indicator" style="width:10%"></th>
 					{#each columnSummary as column}
 						<th
 							class="{column.type} type-indicator"
@@ -79,7 +79,7 @@
 							{column.type}
 						</th>
 					{/each}
-				</tr><tr />
+				</tr><tr></tr>
 			</thead>
 			<tbody on:wheel={handleWheel}>
 				{#each dataPage as row, i}

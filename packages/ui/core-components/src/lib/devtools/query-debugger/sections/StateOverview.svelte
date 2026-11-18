@@ -18,14 +18,14 @@
 			<span class="font-mono text-xs">[my-query].dataLoading</span>
 		</Hint>
 		<span>{query.dataLoading}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md">
 			<span class="font-bold" slot="handle">Data Loaded</span>
 			<span class="font-mono text-xs">[my-query].dataLoaded</span>
 		</Hint>
 		<span>{query.dataLoaded}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md">
 			<span class="font-bold" slot="handle">Data Query Time</span>
@@ -38,14 +38,14 @@
 			<span class="font-mono text-xs">[my-query].lengthLoading</span>
 		</Hint>
 		<span>{query.lengthLoading}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md">
 			<span class="font-bold" slot="handle">Length Loaded</span>
 			<span class="font-mono text-xs">[my-query].lengthLoaded</span>
 		</Hint>
 		<span>{query.lengthLoaded}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md">
 			<span class="font-bold" slot="handle">Length Query Time</span>
@@ -58,14 +58,14 @@
 			<span class="font-mono text-xs">[my-query].columnsLoading</span>
 		</Hint>
 		<span>{query.columnsLoading}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md">
 			<span class="font-bold" slot="handle">Columns Loaded</span>
 			<span class="font-mono text-xs">[my-query].columnsLoaded</span>
 		</Hint>
 		<span>{query.columnsLoaded}</span>
-		<span />
+		<span></span>
 
 		<Hint maxWidth="md">
 			<span class="font-bold" slot="handle">Columns Query Time</span>

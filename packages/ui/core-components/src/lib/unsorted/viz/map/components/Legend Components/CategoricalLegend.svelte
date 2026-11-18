@@ -37,7 +37,7 @@
 							? ''
 							: 'rounded-full'} w-[8px]"
 						style="background-color: {legend.colorPalette[i]};"
-					/>
+					></span>
 					<span class="inline-block ml-2 truncate max-w-[calc(100%-16px)]" title={value}
 						>{value || 'No value'}
 					</span>
