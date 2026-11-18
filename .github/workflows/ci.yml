@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6.1.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26.13.1
+          cache: pnpm
+      # postinstall builds preprocess, core-components and the evidence template
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint
+      - name: Unit tests
+        run: |
+          for p in lib/sdk lib/component-utilities ui/tailwind ui/core-components datasources/javascript; do
+            pnpm --filter ./packages/$p exec vitest run
+          done
+          # mock-fs doesn't work on Node 26
+          pnpm --filter ./packages/lib/preprocess exec vitest run --exclude src/partials/inject-partials.spec.js
+      - name: Changesets
+        if: github.event_name == 'pull_request'
+        run: pnpm changeset status --since=origin/main
