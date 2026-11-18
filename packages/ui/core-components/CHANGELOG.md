@@ -1,5 +1,11 @@
 # @evidence-dev/core-components
 
+## 5.5.0
+
+### Minor Changes
+
+- 94897a930: Vite 8, Svelte 5 and SvelteKit 2.70: consumers need svelte ^5.46.4 and vite ^8 as peers.
+
 ## 5.4.3
 
 ### Patch Changes

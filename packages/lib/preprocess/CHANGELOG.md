@@ -1,5 +1,11 @@
 # @evidence-dev/preprocess
 
+## 6.1.0
+
+### Minor Changes
+
+- 94897a930: Vite 8, Svelte 5 and SvelteKit 2.70: consumers need svelte ^5.46.4 and vite ^8 as peers.
+
 ## 6.0.8
 
 ### Patch Changes

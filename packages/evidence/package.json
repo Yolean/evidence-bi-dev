@@ -1,6 +1,6 @@
 {
 	"name": "@yolean/evidence",
-	"version": "40.1.9",
+	"version": "40.2.0",
 	"description": "dependencies for evidence projects",
 	"type": "module",
 	"keywords": [
