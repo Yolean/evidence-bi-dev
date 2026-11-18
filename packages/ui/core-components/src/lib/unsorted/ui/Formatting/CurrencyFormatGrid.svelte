@@ -23,10 +23,12 @@
 	<div transition:slide>
 		<table class="w-full border-separate [border-spacing:0.5rem_0.5rem] -mx-2">
 			<thead class="text-sm py-2">
-				<th class="max-w-14 text-left font-medium">Format Name</th>
-				<th class="min-w-20 text-left font-medium">Format Code</th>
-				<th class="min-w-20 text-left font-medium">Example Input</th>
-				<th class="min-w-20 text-right font-medium">Example Output</th>
+				<tr>
+					<th class="max-w-14 text-left font-medium">Format Name</th>
+					<th class="min-w-20 text-left font-medium">Format Code</th>
+					<th class="min-w-20 text-left font-medium">Example Input</th>
+					<th class="min-w-20 text-right font-medium">Example Output</th>
+				</tr>
 			</thead>
 			{#each formats.filter((d) => d.parentFormat === selectedCurrency) as format (format.formatTag)}
 				<tr>

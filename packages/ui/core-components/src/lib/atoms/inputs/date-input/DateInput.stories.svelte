@@ -36,12 +36,10 @@
 </Template>
 
 <Story name="Basic Usage" let:args>
-	<h1>
-		Input Store:
-		<h2>value: {$inputStore.dateInput.value}</h2>
-		<h2>start: {$inputStore.dateInput.start}</h2>
-		<h2>end: {$inputStore.dateInput.end}</h2>
-	</h1>
+	<h1>Input Store:</h1>
+	<h2>value: {$inputStore.dateInput.value}</h2>
+	<h2>start: {$inputStore.dateInput.start}</h2>
+	<h2>end: {$inputStore.dateInput.end}</h2>
 	<DateInput {...args} name="dateInput" />
 </Story>
 <Story name="dateInput_range" let:args>

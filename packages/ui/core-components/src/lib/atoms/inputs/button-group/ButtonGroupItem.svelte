@@ -26,9 +26,9 @@
 
 	const { update, value: currentValue } = getButtonGroupContext();
 
+	// a prop named default: Svelte 5 rejects `export { _default as default }`
 	/** @type {boolean} */
-	let _default = false;
-	export { _default as default };
+	const _default = $$props.default ?? false;
 
 	if (_default) {
 		update({ valueLabel, value });

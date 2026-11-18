@@ -533,7 +533,8 @@ describe('dropdownOptionStore', () => {
 			await vi.advanceTimersByTimeAsync(100);
 			expect(get(options)).toHaveLength(0);
 		});
-		it(
+		// skipped because browserDebounce is disabled
+		it.skip(
 			'should add options one at a time',
 			async () => {
 				const { addOptions, options } = dropdownOptionStore({ noDefault: true });
@@ -548,10 +549,10 @@ describe('dropdownOptionStore', () => {
 				expect(get(options)).toHaveLength(0);
 				await vi.advanceTimersByTimeAsync(100);
 				expect(get(options)).toHaveLength(2);
-			},
-			{ skip: true /* skipped because browserDebounce is disabled */ }
+			}
 		);
-		it(
+		// skipped because browserDebounce is disabled
+		it.skip(
 			'should add 2 options at once',
 			async () => {
 				const { addOptions, options } = dropdownOptionStore({ noDefault: true });
@@ -568,10 +569,10 @@ describe('dropdownOptionStore', () => {
 				expect(get(options)).toHaveLength(0);
 				await vi.advanceTimersByTimeAsync(100);
 				expect(get(options)).toHaveLength(2);
-			},
-			{ skip: true /* skipped because browserDebounce is disabled */ }
+			}
 		);
-		it(
+		// skipped because browserDebounce is disabled
+		it.skip(
 			'should add a lot of options at once',
 			async () => {
 				const opts = new Array(100).fill(null).map((_, i) => ({ value: i, label: i.toString() }));
@@ -580,8 +581,7 @@ describe('dropdownOptionStore', () => {
 				expect(get(options)).toHaveLength(0);
 				await vi.advanceTimersByTimeAsync(100);
 				expect(get(options)).toHaveLength(100);
-			},
-			{ skip: true /* skipped because browserDebounce is disabled */ }
+			}
 		);
 
 		it('should remove an option', async () => {

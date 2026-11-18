@@ -41,7 +41,9 @@ const config = {
 		...evidencePreprocess(true),
 		injectComponents(),
 		preprocess({
-			postcss: true
+			postcss: true,
+			// the template has no tsconfig.json for svelte-preprocess to find
+			typescript: { compilerOptions: { verbatimModuleSyntax: true } }
 		}),
 		addBasePathToHrefAndSrc
 	],

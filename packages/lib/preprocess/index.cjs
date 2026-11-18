@@ -7,7 +7,7 @@ const addClasses = require('./src/add-classes.cjs');
 const processFrontmatter = require('./src/frontmatter/process-frontmatter.cjs');
 const injectPartials = require('./src/partials/inject-partials.cjs');
 const rehypeSlug = require('rehype-slug');
-const rehypeAutolinkHeadings = require('rehype-autolink-headings');
+const autolinkHeadings = require('./src/autolink-headings.cjs');
 
 module.exports = function evidencePreprocess(componentDevelopmentMode = false) {
 	return [
@@ -33,13 +33,7 @@ module.exports = function evidencePreprocess(componentDevelopmentMode = false) {
 					}
 				],
 				[rehypeSlug],
-				[
-					rehypeAutolinkHeadings,
-					{
-						behavior: 'wrap',
-						properties: {}
-					}
-				]
+				[autolinkHeadings]
 			]
 		}),
 

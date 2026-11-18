@@ -10,8 +10,7 @@
 	import DownloadData from '../../ui/DownloadData.svelte';
 	import CodeBlock from '../../ui/CodeBlock.svelte';
 	import ChartLoading from '../../ui/ChartLoading.svelte';
-	import { flush } from 'svelte/internal';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, flushSync } from 'svelte';
 	import { getThemeStores } from '../../../themes/themes.js';
 
 	const { activeAppearance, theme, resolveColorsObject } = getThemeStores();
@@ -51,7 +50,7 @@
 <svelte:window
 	on:copy={() => {
 		copying = true;
-		flush();
+		flushSync();
 		setTimeout(() => {
 			copying = false;
 		}, 0);
