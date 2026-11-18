@@ -31,6 +31,24 @@ for (const file of files) {
 	execFileSync('npm', ['publish', tgz, '--access', 'public', ...(dryRun ? ['--dry-run'] : [])], {
 		stdio: 'inherit'
 	});
+	// the registry's CDN can answer 404 for minutes after a publish, and changeset publish
+	// would then try this version again and fail
+	if (!dryRun) {
+		const until = Date.now() + 10 * 60 * 1000;
+		while (Date.now() < until) {
+			const seen = spawnSync(
+				'npm',
+				['view', `${pkg.name}@${pkg.version}`, 'version', '--prefer-online'],
+				{
+					encoding: 'utf8'
+				}
+			);
+			if (seen.status === 0 && seen.stdout.trim() === pkg.version) process.exit(0);
+			console.log(`Waiting for the registry to show ${pkg.name}@${pkg.version}`);
+			execFileSync('sleep', ['15']);
+		}
+		throw new Error(`${pkg.name}@${pkg.version} still not on the registry after 10 minutes`);
+	}
 	process.exit(0);
 }
 console.log('Every package version is already published');
