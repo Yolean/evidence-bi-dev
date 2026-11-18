@@ -1,6 +1,6 @@
 {
 	"name": "@yolean/evidence-sdk",
-	"version": "4.2.0",
+	"version": "4.2.1",
 	"description": "",
 	"bin": {
 		"evidence-sdk": "./src/cli.js"

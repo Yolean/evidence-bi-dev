@@ -1,6 +1,6 @@
 {
 	"name": "@yolean/evidence-csv",
-	"version": "1.0.17",
+	"version": "1.0.18",
 	"description": "CSV driver for Evidence projects, based on DuckDB driver",
 	"main": "index.cjs",
 	"author": "Sean Hughes",

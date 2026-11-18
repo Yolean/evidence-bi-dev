@@ -1,6 +1,6 @@
 {
 	"name": "@yolean/evidence-mssql",
-	"version": "1.1.5",
+	"version": "1.1.6",
 	"description": "Microsoft Server SQL driver for Evidence projects",
 	"main": "index.cjs",
 	"author": "evidence.dev",

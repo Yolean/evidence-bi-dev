@@ -1,6 +1,6 @@
 {
 	"name": "@yolean/evidence-trino",
-	"version": "1.0.12",
+	"version": "1.0.13",
 	"description": "Trino driver for Evidence projects",
 	"main": "index.cjs",
 	"author": "evidence.dev",

@@ -1,5 +1,11 @@
 # @evidence-dev/mysql
 
+## 1.1.8
+
+### Patch Changes
+
+- 8b1f45215: Internal dependencies are published as ^ ranges instead of exact versions, so a release of one package no longer leaves its dependents pinned to the previous version.
+
 ## 1.1.7
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
 	"name": "@yolean/evidence-redshift",
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"description": "Redshift driver for Evidence projects",
 	"main": "index.cjs",
 	"author": "Archie Wood",

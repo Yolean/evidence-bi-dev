@@ -1,5 +1,11 @@
 # @evidence-dev/bigquery
 
+## 2.0.14
+
+### Patch Changes
+
+- 8b1f45215: Internal dependencies are published as ^ ranges instead of exact versions, so a release of one package no longer leaves its dependents pinned to the previous version.
+
 ## 2.0.13
 
 ### Patch Changes

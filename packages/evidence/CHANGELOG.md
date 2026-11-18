@@ -1,5 +1,11 @@
 # @evidence-dev/evidence
 
+## 40.3.1
+
+### Patch Changes
+
+- 8b1f45215: Internal dependencies are published as ^ ranges instead of exact versions, so a release of one package no longer leaves its dependents pinned to the previous version.
+
 ## 40.3.0
 
 ### Minor Changes

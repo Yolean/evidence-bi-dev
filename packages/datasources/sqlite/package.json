@@ -1,9 +1,9 @@
 {
 	"name": "@yolean/evidence-sqlite",
-	"version": "2.0.10",
+	"version": "2.0.11",
 	"description": "SQLite driver for Evidence projects",
 	"main": "index.cjs",
-	"author": "Edgar Ram\u00edrez-Mondrag\u00f3n",
+	"author": "Edgar Ramírez-Mondragón",
 	"license": "MIT",
 	"scripts": {
 		"test": "uvu test test.js"
