@@ -1,5 +1,11 @@
 # @evidence-dev/sdk
 
+## 4.2.0
+
+### Minor Changes
+
+- 81977b64b: deployment.dataScope: pages with that route parameter load data/ and api/ from <basePath>/<value>/, and prerender their query results there.
+
 ## 4.1.0
 
 ### Minor Changes

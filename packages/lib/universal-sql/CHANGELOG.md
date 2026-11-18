@@ -1,5 +1,11 @@
 # @evidence-dev/universal-sql
 
+## 3.1.0
+
+### Minor Changes
+
+- 81977b64b: deployment.dataScope: pages with that route parameter load data/ and api/ from <basePath>/<value>/, and prerender their query results there.
+
 ## 3.0.2
 
 ### Patch Changes
@@ -17,10 +23,12 @@
 ### Major Changes
 
 - b28f63f23: Update DuckDB to latest packages:
+
   - Switch to @duckdb/node-api from duckdb-async
   - Update duckdb-wasm to latest release
 
   This release also has small data fixes across several packages:
+
   - Better handling of NULL values when discovering column types
   - Fix batch processing of parquet files
   - Fix error with temporary parquet files when reloading data in dev environment
