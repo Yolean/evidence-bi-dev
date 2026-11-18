@@ -14,6 +14,7 @@
 '@yolean/evidence-sdk': patch
 '@yolean/evidence-snowflake': patch
 '@yolean/evidence-sqlite': patch
-'@yolean/evidence-trino': patch---
+'@yolean/evidence-trino': patch
+---
 
 Internal dependencies are published as ^ ranges instead of exact versions, so a release of one package no longer leaves its dependents pinned to the previous version.
