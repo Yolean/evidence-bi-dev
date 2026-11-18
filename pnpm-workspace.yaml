@@ -6,3 +6,49 @@ packages:
   - '!e2e/packaging'
   - 'packages/**'
   - 'sites/*'
+
+# moved from package.json "pnpm" and .npmrc, which pnpm 12 no longer reads for settings
+publicHoistPattern:
+  - '*apache-arrow*'
+
+overrides:
+  'got@<11.8.5': '>=11.8.5'
+  'jsonwebtoken@<=8.5.1': '>=9.0.0'
+  'trim@<0.0.3': '>=0.0.3'
+  'undici@<5.19.1': '>=5.19.1'
+  'undici@>=2.0.0 <5.19.1': '>=5.19.1'
+  'jsonwebtoken@<9.0.0': '>=9.0.0'
+  'nth-check@<2.0.1': '>=2.0.1'
+  'fast-xml-parser': '>=4.4.1'
+  'dset': '>=3.1.4'
+  'cookie': '>=0.7.1'
+  'nanoid': '3.3.8'
+  'esbuild': '>=0.25.0'
+  'serialize-javascript': '>=6.0.2'
+  'node-forge': '>=1.3.2'
+  'glob@>=10.2.0 <11': '10.5.0'
+  'jws@>=3 <4': '3.2.3'
+  'jws@>=4': '>=4.0.1'
+  'js-yaml@>=3 <3.14.2': '3.14.2'
+  'js-yaml@>=4': '>=4.1.1'
+  'vite@>=5 <5.4.21': '5.4.21'
+  'tmp': '>=0.2.4'
+  'qs@<6.14.1': '>=6.14.1'
+  '@parcel/reporter-dev-server@<=2.16.3': '>=2.16.4'
+  'preact@>=10.26.5 <10.28.2': '>=10.28.2'
+  'tar': '>=7.5.7'
+  'devalue': '>=5.6.2'
+
+# sqlite3 fetches its native binding in its install script, which the sqlite datasource needs;
+# the others ship binaries as optional platform packages or only print messages
+allowBuilds:
+  '@parcel/watcher': false
+  '@sveltejs/kit': false
+  '@swc/core': false
+  '@vscode/vsce-sign': false
+  esbuild: false
+  keytar: false
+  lmdb: false
+  msgpackr-extract: false
+  sqlite3: true
+  svelte-preprocess: false
