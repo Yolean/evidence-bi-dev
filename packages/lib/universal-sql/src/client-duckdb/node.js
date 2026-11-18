@@ -147,7 +147,7 @@ export function query(sql, cache_options) {
 	// only cache during build, because
 	// parquet can/will eventually change during dev
 	if (cache_options?.prerendering) {
-		result = get_arrow_if_sql_already_run(sql);
+		result = get_arrow_if_sql_already_run(sql, cache_options.scope);
 	}
 
 	// TODO: This just fails, where is the process going?

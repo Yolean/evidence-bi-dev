@@ -10,15 +10,20 @@ import {
 import { profile } from '@evidence-dev/component-utilities/profile';
 import { toasts } from '@evidence-dev/component-utilities/stores';
 import { setTrackProxy } from '@evidence-dev/sdk/usql';
-import { addBasePath } from '@evidence-dev/sdk/utils/svelte';
+import { addBasePath, addScopedBasePath, getDataScope } from '@evidence-dev/sdk/utils/svelte';
 import md5 from 'blueimp-md5';
 
 export const ssr = !dev;
 export const prerender = import.meta.env.VITE_EVIDENCE_SPA !== 'true';
 export const trailingSlash = 'always';
 
-const loadDB = async () => {
+/**
+ * @param {string | null} scope deployment.dataScope value; the browser loads only that scope's data
+ */
+const loadDB = async (scope) => {
 	let renderedFiles = {};
+	/** @param {string} path */
+	const addDataPath = (path) => (browser ? addScopedBasePath(path, scope) : addBasePath(path));
 
 	if (!browser) {
 		const { readFile } = await import('fs/promises');
@@ -26,7 +31,7 @@ const loadDB = async () => {
 			await readFile('./static/data/manifest.json', 'utf-8').catch(() => '{}')
 		));
 	} else {
-		const res = await fetch(addBasePath('/data/manifest.json'));
+		const res = await fetch(addDataPath('/data/manifest.json'));
 		if (res.ok) ({ renderedFiles } = await res.json());
 	}
 	await profile(initDB);
@@ -45,30 +50,50 @@ const loadDB = async () => {
 			);
 		}
 	} else {
-		await profile(setParquetURLs, renderedFiles, { addBasePath });
+		await profile(setParquetURLs, renderedFiles, { addBasePath: addDataPath });
 		await profile(updateSearchPath, Object.keys(renderedFiles));
 	}
 };
 
-const database_initialization = profile(loadDB);
+/** @type {Promise<void> | undefined} */
+let database_initialization;
+/** @type {string | null | undefined} */
+let database_scope;
+/**
+ * The server prerenders every scope from the full data set; the browser
+ * reloads when navigation crosses into another scope.
+ * @param {string | null} scope
+ */
+const initializeDatabase = (scope) => {
+	if (!database_initialization || (browser && scope !== database_scope)) {
+		database_scope = scope;
+		database_initialization = profile(loadDB, scope);
+	}
+	return database_initialization;
+};
 
 /**
  *
  * @param {string} routeHash
  * @param {string} paramsHash
  * @param {typeof fetch} fetch
+ * @param {string | null} scope
  * @returns {Promise<Record<string, unknown[]>>}
  */
-async function getPrerenderedQueries(routeHash, paramsHash, fetch) {
+async function getPrerenderedQueries(routeHash, paramsHash, fetch, scope) {
 	// get every query that's run in the component
-	const res = await fetch(addBasePath(`/api/${routeHash}/${paramsHash}/all-queries.json`));
+	const res = await fetch(
+		addScopedBasePath(`/api/${routeHash}/${paramsHash}/all-queries.json`, scope)
+	);
 	if (!res.ok) return {};
 
 	const sql_cache_with_hashed_query_strings = await res.json();
 
 	const resolved_entries = await Promise.all(
 		Object.entries(sql_cache_with_hashed_query_strings).map(async ([query_name, query_hash]) => {
-			const res = await fetch(addBasePath(`/api/prerendered_queries/${query_hash}.arrow`));
+			const res = await fetch(
+				addScopedBasePath(`/api/prerendered_queries/${query_hash}.arrow`, scope)
+			);
 			if (!res.ok) return null;
 
 			const table = await tableFromIPC(res);
@@ -86,10 +111,14 @@ const dummy_pages = new Map();
 
 /** @satisfies {import("./$types").LayoutLoad} */
 export const load = async ({ fetch, route, params, url }) => {
+	const scope = getDataScope(params);
+	// prerendering fetches the shared files; the build copies them into each scope
+	/** @param {string} path */
+	const addApiPath = (path) => (browser ? addScopedBasePath(path, scope) : addBasePath(path));
 	const [{ customFormattingSettings }, pagesManifest, evidencemeta] = await Promise.all([
-		fetch(addBasePath('/api/customFormattingSettings.json/GET.json')).then((x) => x.json()),
-		fetch(addBasePath('/api/pagesManifest.json')).then((x) => x.json()),
-		fetch(addBasePath(`/api/${route.id}/evidencemeta.json`))
+		fetch(addApiPath('/api/customFormattingSettings.json/GET.json')).then((x) => x.json()),
+		fetch(addApiPath('/api/pagesManifest.json')).then((x) => x.json()),
+		fetch(addApiPath(`/api/${route.id}/evidencemeta.json`))
 			.then((x) => x.json())
 			.catch(() => ({ queries: [] }))
 	]);
@@ -121,20 +150,21 @@ export const load = async ({ fetch, route, params, url }) => {
 		dummy_pages.delete(url.pathname);
 	}
 
-	if (!browser) await database_initialization;
+	const database_ready = initializeDatabase(scope);
+	if (!browser) await database_ready;
 	// account for potential changes in manifest (source query hmr)
 	if (!browser && dev) await initDB();
 
 	// let SSR saturate the cache first
 	if (browser && isUserPage && prerender) {
-		data = await getPrerenderedQueries(routeHash, paramsHash, fetch);
+		data = await getPrerenderedQueries(routeHash, paramsHash, fetch, scope);
 	}
 
 	/** @type {App.PageData["__db"]["query"]} */
 	function query(sql, { query_name, callback = (x) => x } = {}) {
 		if (browser) {
 			return (async () => {
-				await database_initialization;
+				await database_ready;
 				const result = await usqlQuery(sql);
 				return callback(result);
 			})();
@@ -145,7 +175,8 @@ export const load = async ({ fetch, route, params, url }) => {
 				route_hash: routeHash,
 				additional_hash: paramsHash,
 				query_name,
-				prerendering: building
+				prerendering: building,
+				scope
 			})
 		);
 	}
@@ -169,12 +200,14 @@ export const load = async ({ fetch, route, params, url }) => {
 		__db: {
 			query,
 			async load() {
-				return database_initialization;
+				return database_ready;
 			},
 			async updateParquetURLs(manifest) {
 				// todo: maybe diff with old?
 				const { renderedFiles } = JSON.parse(manifest);
-				await profile(setParquetURLs, renderedFiles, { addBasePath });
+				await profile(setParquetURLs, renderedFiles, {
+					addBasePath: (path) => addScopedBasePath(path, scope)
+				});
 			}
 		},
 		inputs,

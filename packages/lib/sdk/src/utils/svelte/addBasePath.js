@@ -43,3 +43,32 @@ export const addBasePath = (path, config) => {
 		return _path;
 	}
 };
+
+/**
+ * The data scope of a page: the value of the route parameter named by
+ * deployment.dataScope, or null when it isn't configured or the page lacks it
+ * @param {Record<string, string> | undefined} params
+ * @param {import("../../configuration/schemas/config.schema.js").EvidenceConfig} config
+ * @returns {string | null}
+ */
+export const getDataScope = (params, config) => {
+	const param = config.deployment.dataScope;
+	if (!param || !params?.[param]) return null;
+	return params[param];
+};
+
+/**
+ * Like addBasePath, under /<scope> for pages with a data scope
+ * @param {string} path
+ * @param {string | null} scope
+ * @param {import("../../configuration/schemas/config.schema.js").EvidenceConfig} config
+ * @example addScopedBasePath('/data/manifest.json', 'org1', config) // '/base/org1/data/manifest.json'
+ * @returns {string}
+ */
+export const addScopedBasePath = (path, scope, config) => {
+	if (!scope) return addBasePath(path, config);
+	return addBasePath(
+		`/${encodeURIComponent(scope)}${path.startsWith('/') ? '' : '/'}${path}`,
+		config
+	);
+};

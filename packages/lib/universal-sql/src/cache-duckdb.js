@@ -57,6 +57,14 @@ function hash(buffer) {
  */
 const sql_string_cache = new Map();
 
+// Pages with a data scope (deployment.dataScope) prerender their results under /<scope>/,
+// so a result is cached per scope: a query with the same result in two scopes is written twice
+/**
+ * @param {string} sql
+ * @param {string | null | undefined} scope
+ */
+const cacheKey = (sql, scope) => (scope ? `${scope}\n${sql}` : sql);
+
 // while prerendering static sites, sveltekit finds endpoints based on what's used in load functions with
 // the provided fetch - since the data isn't ready yet, instead we write the data to the place where sveltekit
 // would have written it
@@ -66,19 +74,21 @@ const prerender_path = `.svelte-kit/output/prerendered/dependencies`;
  * Caches DuckDB queries that have been executed during SSR
  * @param {string} sql_string SQL string executed
  * @param {import("apache-arrow").Table} data result of the query
- * @param {{ route_hash: string, additional_hash: string, query_name: string, prerendering: boolean }} cache_options
+ * @param {{ route_hash: string, additional_hash: string, query_name: string, prerendering: boolean, scope?: string | null }} cache_options
  * @returns {void}
  */
 export function cache_for_hash(
 	sql_string,
 	data,
-	{ route_hash, additional_hash, query_name, prerendering }
+	{ route_hash, additional_hash, query_name, prerendering, scope }
 ) {
+	const key = cacheKey(sql_string, scope);
+	const prerender_scope_path = scope ? `${prerender_path}/${scope}` : prerender_path;
 	// if the it's in the cache then we shouldn't bother
-	let ipc_table_hash = sql_string_cache.get(sql_string);
+	let ipc_table_hash = sql_string_cache.get(key);
 
 	// this can only be false during `prerendering`
-	if (!sql_string_cache.has(sql_string)) {
+	if (!sql_string_cache.has(key)) {
 		const ipc_table = tableToIPC(data);
 		ipc_table_hash = hash(ipc_table);
 
@@ -90,10 +100,10 @@ export function cache_for_hash(
 		if (prerendering) {
 			// save the result of the query
 			writeToPossiblyNonexistentFile(
-				`${prerender_path}/api/prerendered_queries/${ipc_table_hash}.arrow`,
+				`${prerender_scope_path}/api/prerendered_queries/${ipc_table_hash}.arrow`,
 				ipc_table
 			);
-			sql_string_cache.set(sql_string, ipc_table_hash);
+			sql_string_cache.set(key, ipc_table_hash);
 		}
 	}
 
@@ -128,7 +138,7 @@ export function cache_for_hash(
 	if (prerendering) {
 		// keep track of the query names for the page
 		writeToPossiblyNonexistentFile(
-			`${prerender_path}/api/${route_hash}/${additional_hash}/all-queries.json`,
+			`${prerender_scope_path}/api/${route_hash}/${additional_hash}/all-queries.json`,
 			JSON.stringify(sql_cache_with_hashed_query_strings)
 		);
 	}
@@ -175,9 +185,11 @@ export function get_all_page_queries(route_hash, additional_hash) {
  *
  * Only runs during build
  * @param {string} sql
+ * @param {string | null} [scope]
  * @returns {import("apache-arrow").Table | null}
  */
-export function get_arrow_if_sql_already_run(sql) {
-	if (!sql_string_cache.has(sql)) return null;
-	return tableFromIPC(get_cache_for_hash(sql_string_cache.get(sql)));
+export function get_arrow_if_sql_already_run(sql, scope) {
+	const key = cacheKey(sql, scope);
+	if (!sql_string_cache.has(key)) return null;
+	return tableFromIPC(get_cache_for_hash(sql_string_cache.get(key)));
 }

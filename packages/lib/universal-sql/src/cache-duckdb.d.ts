@@ -8,7 +8,13 @@
 export function cache_for_hash(
 	sql_string: string,
 	data: import('apache-arrow').Table,
-	cache_options: { route_hash: string; query_name: string; prerendering: boolean }
+	cache_options: {
+		route_hash: string;
+		additional_hash: string;
+		query_name: string;
+		prerendering: boolean;
+		scope?: string | null;
+	}
 ): void;
 
 /**

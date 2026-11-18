@@ -84,3 +84,25 @@ describe('addBasePath', () => {
 		expect(addBasePath('test', config)).toBe('/base/test');
 	});
 });
+
+import { addScopedBasePath, getDataScope } from './addBasePath.js';
+describe('data scope', () => {
+	const scoped = { deployment: { basePath: '/base', dataScope: 'orgslug' } };
+	it('is the value of the configured route parameter', () => {
+		expect(getDataScope({ orgslug: 'org1' }, scoped)).toBe('org1');
+	});
+	it('is null for pages without the parameter, or without dataScope', () => {
+		expect(getDataScope({ site: 's' }, scoped)).toBe(null);
+		expect(getDataScope(undefined, scoped)).toBe(null);
+		expect(getDataScope({ orgslug: 'org1' }, { deployment: { basePath: '/base' } })).toBe(null);
+	});
+	it('puts scoped paths under /<scope> after the base path', () => {
+		expect(addScopedBasePath('/data/manifest.json', 'org1', scoped)).toBe(
+			'/base/org1/data/manifest.json'
+		);
+		expect(addScopedBasePath('api/x.json', 'org1', scoped)).toBe('/base/org1/api/x.json');
+	});
+	it('leaves unscoped paths to addBasePath', () => {
+		expect(addScopedBasePath('/data/manifest.json', null, scoped)).toBe('/base/data/manifest.json');
+	});
+});
