@@ -9,7 +9,7 @@
 		"test": "uvu test test.js"
 	},
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@^",
 		"@duckdb/node-api": "^1.4.2-r.1"
 	},
 	"devDependencies": {

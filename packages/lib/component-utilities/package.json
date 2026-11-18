@@ -20,7 +20,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@evidence-dev/sdk": "workspace:@yolean/evidence-sdk@*",
+		"@evidence-dev/sdk": "workspace:@yolean/evidence-sdk@^",
 		"@steeze-ui/simple-icons": "^1.7.1",
 		"@steeze-ui/svelte-icon": "1.6.2",
 		"@steeze-ui/tabler-icons": "2.1.1",

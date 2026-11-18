@@ -3,13 +3,13 @@
 	"version": "2.0.10",
 	"description": "SQLite driver for Evidence projects",
 	"main": "index.cjs",
-	"author": "Edgar Ramírez-Mondragón",
+	"author": "Edgar Ram\u00edrez-Mondrag\u00f3n",
 	"license": "MIT",
 	"scripts": {
 		"test": "uvu test test.js"
 	},
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@^",
 		"sqlite": "4.2.1",
 		"sqlite3": "5.1.6"
 	},

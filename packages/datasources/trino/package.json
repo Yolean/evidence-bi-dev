@@ -9,7 +9,7 @@
 		"test": "uvu test test.js"
 	},
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@^",
 		"presto-client": "^1.1.0"
 	},
 	"type": "module",

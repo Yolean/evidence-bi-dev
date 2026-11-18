@@ -9,7 +9,7 @@
 		"test": "uvu test test.js"
 	},
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@^",
 		"mssql": "^11.0.1"
 	},
 	"devDependencies": {

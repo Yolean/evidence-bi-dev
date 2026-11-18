@@ -426,43 +426,43 @@ importers:
   e2e/base-path:
     dependencies:
       '@evidence-dev/bigquery':
-        specifier: workspace:@yolean/evidence-bigquery@*
+        specifier: workspace:@yolean/evidence-bigquery@^
         version: link:../../packages/datasources/bigquery
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/databricks':
-        specifier: workspace:@yolean/evidence-databricks@*
+        specifier: workspace:@yolean/evidence-databricks@^
         version: link:../../packages/datasources/databricks
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       '@evidence-dev/motherduck':
-        specifier: workspace:@yolean/evidence-motherduck@*
+        specifier: workspace:@yolean/evidence-motherduck@^
         version: link:../../packages/datasources/motherduck
       '@evidence-dev/mssql':
-        specifier: workspace:@yolean/evidence-mssql@*
+        specifier: workspace:@yolean/evidence-mssql@^
         version: link:../../packages/datasources/mssql
       '@evidence-dev/mysql':
-        specifier: workspace:@yolean/evidence-mysql@*
+        specifier: workspace:@yolean/evidence-mysql@^
         version: link:../../packages/datasources/mysql
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../../packages/datasources/postgres
       '@evidence-dev/snowflake':
-        specifier: workspace:@yolean/evidence-snowflake@*
+        specifier: workspace:@yolean/evidence-snowflake@^
         version: link:../../packages/datasources/snowflake
       '@evidence-dev/sqlite':
-        specifier: workspace:@yolean/evidence-sqlite@*
+        specifier: workspace:@yolean/evidence-sqlite@^
         version: link:../../packages/datasources/sqlite
       '@evidence-dev/trino':
-        specifier: workspace:@yolean/evidence-trino@*
+        specifier: workspace:@yolean/evidence-trino@^
         version: link:../../packages/datasources/trino
     devDependencies:
       '@playwright/test':
@@ -481,43 +481,43 @@ importers:
   e2e/basic:
     dependencies:
       '@evidence-dev/bigquery':
-        specifier: workspace:@yolean/evidence-bigquery@*
+        specifier: workspace:@yolean/evidence-bigquery@^
         version: link:../../packages/datasources/bigquery
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/databricks':
-        specifier: workspace:@yolean/evidence-databricks@*
+        specifier: workspace:@yolean/evidence-databricks@^
         version: link:../../packages/datasources/databricks
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       '@evidence-dev/motherduck':
-        specifier: workspace:@yolean/evidence-motherduck@*
+        specifier: workspace:@yolean/evidence-motherduck@^
         version: link:../../packages/datasources/motherduck
       '@evidence-dev/mssql':
-        specifier: workspace:@yolean/evidence-mssql@*
+        specifier: workspace:@yolean/evidence-mssql@^
         version: link:../../packages/datasources/mssql
       '@evidence-dev/mysql':
-        specifier: workspace:@yolean/evidence-mysql@*
+        specifier: workspace:@yolean/evidence-mysql@^
         version: link:../../packages/datasources/mysql
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../../packages/datasources/postgres
       '@evidence-dev/snowflake':
-        specifier: workspace:@yolean/evidence-snowflake@*
+        specifier: workspace:@yolean/evidence-snowflake@^
         version: link:../../packages/datasources/snowflake
       '@evidence-dev/sqlite':
-        specifier: workspace:@yolean/evidence-sqlite@*
+        specifier: workspace:@yolean/evidence-sqlite@^
         version: link:../../packages/datasources/sqlite
       '@evidence-dev/trino':
-        specifier: workspace:@yolean/evidence-trino@*
+        specifier: workspace:@yolean/evidence-trino@^
         version: link:../../packages/datasources/trino
     devDependencies:
       '@playwright/test':
@@ -533,13 +533,13 @@ importers:
   e2e/dev-server-startup:
     dependencies:
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       vite:
         specifier: 8.3.8
@@ -558,43 +558,43 @@ importers:
   e2e/hmr:
     dependencies:
       '@evidence-dev/bigquery':
-        specifier: workspace:@yolean/evidence-bigquery@*
+        specifier: workspace:@yolean/evidence-bigquery@^
         version: link:../../packages/datasources/bigquery
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/databricks':
-        specifier: workspace:@yolean/evidence-databricks@*
+        specifier: workspace:@yolean/evidence-databricks@^
         version: link:../../packages/datasources/databricks
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       '@evidence-dev/motherduck':
-        specifier: workspace:@yolean/evidence-motherduck@*
+        specifier: workspace:@yolean/evidence-motherduck@^
         version: link:../../packages/datasources/motherduck
       '@evidence-dev/mssql':
-        specifier: workspace:@yolean/evidence-mssql@*
+        specifier: workspace:@yolean/evidence-mssql@^
         version: link:../../packages/datasources/mssql
       '@evidence-dev/mysql':
-        specifier: workspace:@yolean/evidence-mysql@*
+        specifier: workspace:@yolean/evidence-mysql@^
         version: link:../../packages/datasources/mysql
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../../packages/datasources/postgres
       '@evidence-dev/snowflake':
-        specifier: workspace:@yolean/evidence-snowflake@*
+        specifier: workspace:@yolean/evidence-snowflake@^
         version: link:../../packages/datasources/snowflake
       '@evidence-dev/sqlite':
-        specifier: workspace:@yolean/evidence-sqlite@*
+        specifier: workspace:@yolean/evidence-sqlite@^
         version: link:../../packages/datasources/sqlite
       '@evidence-dev/trino':
-        specifier: workspace:@yolean/evidence-trino@*
+        specifier: workspace:@yolean/evidence-trino@^
         version: link:../../packages/datasources/trino
     devDependencies:
       '@playwright/test':
@@ -610,43 +610,43 @@ importers:
   e2e/prerender:
     dependencies:
       '@evidence-dev/bigquery':
-        specifier: workspace:@yolean/evidence-bigquery@*
+        specifier: workspace:@yolean/evidence-bigquery@^
         version: link:../../packages/datasources/bigquery
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/databricks':
-        specifier: workspace:@yolean/evidence-databricks@*
+        specifier: workspace:@yolean/evidence-databricks@^
         version: link:../../packages/datasources/databricks
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       '@evidence-dev/motherduck':
-        specifier: workspace:@yolean/evidence-motherduck@*
+        specifier: workspace:@yolean/evidence-motherduck@^
         version: link:../../packages/datasources/motherduck
       '@evidence-dev/mssql':
-        specifier: workspace:@yolean/evidence-mssql@*
+        specifier: workspace:@yolean/evidence-mssql@^
         version: link:../../packages/datasources/mssql
       '@evidence-dev/mysql':
-        specifier: workspace:@yolean/evidence-mysql@*
+        specifier: workspace:@yolean/evidence-mysql@^
         version: link:../../packages/datasources/mysql
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../../packages/datasources/postgres
       '@evidence-dev/snowflake':
-        specifier: workspace:@yolean/evidence-snowflake@*
+        specifier: workspace:@yolean/evidence-snowflake@^
         version: link:../../packages/datasources/snowflake
       '@evidence-dev/sqlite':
-        specifier: workspace:@yolean/evidence-sqlite@*
+        specifier: workspace:@yolean/evidence-sqlite@^
         version: link:../../packages/datasources/sqlite
       '@evidence-dev/trino':
-        specifier: workspace:@yolean/evidence-trino@*
+        specifier: workspace:@yolean/evidence-trino@^
         version: link:../../packages/datasources/trino
     devDependencies:
       '@playwright/test':
@@ -662,43 +662,43 @@ importers:
   e2e/spa:
     dependencies:
       '@evidence-dev/bigquery':
-        specifier: workspace:@yolean/evidence-bigquery@*
+        specifier: workspace:@yolean/evidence-bigquery@^
         version: link:../../packages/datasources/bigquery
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/databricks':
-        specifier: workspace:@yolean/evidence-databricks@*
+        specifier: workspace:@yolean/evidence-databricks@^
         version: link:../../packages/datasources/databricks
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       '@evidence-dev/motherduck':
-        specifier: workspace:@yolean/evidence-motherduck@*
+        specifier: workspace:@yolean/evidence-motherduck@^
         version: link:../../packages/datasources/motherduck
       '@evidence-dev/mssql':
-        specifier: workspace:@yolean/evidence-mssql@*
+        specifier: workspace:@yolean/evidence-mssql@^
         version: link:../../packages/datasources/mssql
       '@evidence-dev/mysql':
-        specifier: workspace:@yolean/evidence-mysql@*
+        specifier: workspace:@yolean/evidence-mysql@^
         version: link:../../packages/datasources/mysql
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../../packages/datasources/postgres
       '@evidence-dev/snowflake':
-        specifier: workspace:@yolean/evidence-snowflake@*
+        specifier: workspace:@yolean/evidence-snowflake@^
         version: link:../../packages/datasources/snowflake
       '@evidence-dev/sqlite':
-        specifier: workspace:@yolean/evidence-sqlite@*
+        specifier: workspace:@yolean/evidence-sqlite@^
         version: link:../../packages/datasources/sqlite
       '@evidence-dev/trino':
-        specifier: workspace:@yolean/evidence-trino@*
+        specifier: workspace:@yolean/evidence-trino@^
         version: link:../../packages/datasources/trino
     devDependencies:
       '@playwright/test':
@@ -714,43 +714,43 @@ importers:
   e2e/themes:
     dependencies:
       '@evidence-dev/bigquery':
-        specifier: workspace:@yolean/evidence-bigquery@*
+        specifier: workspace:@yolean/evidence-bigquery@^
         version: link:../../packages/datasources/bigquery
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/databricks':
-        specifier: workspace:@yolean/evidence-databricks@*
+        specifier: workspace:@yolean/evidence-databricks@^
         version: link:../../packages/datasources/databricks
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       '@evidence-dev/motherduck':
-        specifier: workspace:@yolean/evidence-motherduck@*
+        specifier: workspace:@yolean/evidence-motherduck@^
         version: link:../../packages/datasources/motherduck
       '@evidence-dev/mssql':
-        specifier: workspace:@yolean/evidence-mssql@*
+        specifier: workspace:@yolean/evidence-mssql@^
         version: link:../../packages/datasources/mssql
       '@evidence-dev/mysql':
-        specifier: workspace:@yolean/evidence-mysql@*
+        specifier: workspace:@yolean/evidence-mysql@^
         version: link:../../packages/datasources/mysql
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../../packages/datasources/postgres
       '@evidence-dev/snowflake':
-        specifier: workspace:@yolean/evidence-snowflake@*
+        specifier: workspace:@yolean/evidence-snowflake@^
         version: link:../../packages/datasources/snowflake
       '@evidence-dev/sqlite':
-        specifier: workspace:@yolean/evidence-sqlite@*
+        specifier: workspace:@yolean/evidence-sqlite@^
         version: link:../../packages/datasources/sqlite
       '@evidence-dev/trino':
-        specifier: workspace:@yolean/evidence-trino@*
+        specifier: workspace:@yolean/evidence-trino@^
         version: link:../../packages/datasources/trino
     devDependencies:
       '@playwright/test':
@@ -766,7 +766,7 @@ importers:
   packages/datasources/bigquery:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       '@google-cloud/bigquery':
         specifier: 6.2.0
@@ -785,10 +785,10 @@ importers:
   packages/datasources/csv:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../duckdb
     devDependencies:
       dotenv:
@@ -801,7 +801,7 @@ importers:
         specifier: 1.7.1
         version: 1.7.1(encoding@0.1.13)(supports-color@8.1.1)
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
     devDependencies:
       dotenv:
@@ -814,7 +814,7 @@ importers:
         specifier: ^1.4.2-r.1
         version: 1.4.2-r.1
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
     devDependencies:
       dotenv:
@@ -880,16 +880,16 @@ importers:
   packages/datasources/motherduck:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../duckdb
 
   packages/datasources/mssql:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       mssql:
         specifier: ^11.0.1
@@ -905,7 +905,7 @@ importers:
   packages/datasources/mysql:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       mysql2:
         specifier: ^3.9.7
@@ -918,7 +918,7 @@ importers:
   packages/datasources/postgres:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       pg:
         specifier: ^8.11.3
@@ -937,16 +937,16 @@ importers:
   packages/datasources/redshift:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../postgres
 
   packages/datasources/snowflake:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       asn1.js:
         specifier: ^5.0.0
@@ -974,7 +974,7 @@ importers:
   packages/datasources/sqlite:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       sqlite:
         specifier: 4.2.1
@@ -990,7 +990,7 @@ importers:
   packages/datasources/trino:
     dependencies:
       '@evidence-dev/db-commons':
-        specifier: workspace:@yolean/evidence-db-commons@*
+        specifier: workspace:@yolean/evidence-db-commons@^
         version: link:../../lib/db-commons
       presto-client:
         specifier: ^1.1.0
@@ -999,16 +999,16 @@ importers:
   packages/evidence:
     dependencies:
       '@evidence-dev/preprocess':
-        specifier: workspace:@yolean/evidence-preprocess@*
+        specifier: workspace:@yolean/evidence-preprocess@^
         version: link:../lib/preprocess
       '@evidence-dev/sdk':
-        specifier: workspace:@yolean/evidence-sdk@*
+        specifier: workspace:@yolean/evidence-sdk@^
         version: link:../lib/sdk
       '@evidence-dev/telemetry':
-        specifier: workspace:@yolean/evidence-telemetry@*
+        specifier: workspace:@yolean/evidence-telemetry@^
         version: link:../lib/telemetry
       '@evidence-dev/universal-sql':
-        specifier: workspace:@yolean/evidence-universal-sql@*
+        specifier: workspace:@yolean/evidence-universal-sql@^
         version: link:../lib/universal-sql
       '@sveltejs/adapter-static':
         specifier: 3.0.11
@@ -1142,7 +1142,7 @@ importers:
   packages/lib/component-utilities:
     dependencies:
       '@evidence-dev/sdk':
-        specifier: workspace:@yolean/evidence-sdk@*
+        specifier: workspace:@yolean/evidence-sdk@^
         version: link:../sdk
       '@steeze-ui/simple-icons':
         specifier: ^1.7.1
@@ -1286,7 +1286,7 @@ importers:
         specifier: workspace:@yolean/evidence-telemetry@^
         version: link:../telemetry
       '@evidence-dev/universal-sql':
-        specifier: workspace:@yolean/evidence-universal-sql@*
+        specifier: workspace:@yolean/evidence-universal-sql@^
         version: link:../universal-sql
       '@steeze-ui/simple-icons':
         specifier: ^1.7.1
@@ -1508,13 +1508,13 @@ importers:
         specifier: ^3.6.0
         version: 3.9.0(@algolia/client-search@5.48.1)(@types/react@19.2.14)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)(search-insights@2.17.3)
       '@evidence-dev/component-utilities':
-        specifier: workspace:@yolean/evidence-component-utilities@*
+        specifier: workspace:@yolean/evidence-component-utilities@^
         version: link:../../lib/component-utilities
       '@evidence-dev/icons':
-        specifier: workspace:@yolean/evidence-icons@*
+        specifier: workspace:@yolean/evidence-icons@^
         version: link:../icons
       '@evidence-dev/tailwind':
-        specifier: workspace:@yolean/evidence-tailwind@*
+        specifier: workspace:@yolean/evidence-tailwind@^
         version: link:../tailwind
       '@internationalized/date':
         specifier: ^3.5.4
@@ -1795,28 +1795,28 @@ importers:
   sites/docs:
     dependencies:
       '@evidence-dev/component-utilities':
-        specifier: workspace:@yolean/evidence-component-utilities@*
+        specifier: workspace:@yolean/evidence-component-utilities@^
         version: link:../../packages/lib/component-utilities
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       '@evidence-dev/faker-datasource':
-        specifier: workspace:@yolean/evidence-faker-datasource@*
+        specifier: workspace:@yolean/evidence-faker-datasource@^
         version: link:../../packages/datasources/faker
       '@evidence-dev/sdk':
-        specifier: workspace:@yolean/evidence-sdk@*
+        specifier: workspace:@yolean/evidence-sdk@^
         version: link:../../packages/lib/sdk
       '@evidence-dev/tailwind':
-        specifier: workspace:@yolean/evidence-tailwind@*
+        specifier: workspace:@yolean/evidence-tailwind@^
         version: link:../../packages/ui/tailwind
       '@resvg/resvg-js':
         specifier: ^2.6.2
@@ -1835,55 +1835,55 @@ importers:
   sites/example-project:
     dependencies:
       '@evidence-dev/bigquery':
-        specifier: workspace:@yolean/evidence-bigquery@*
+        specifier: workspace:@yolean/evidence-bigquery@^
         version: link:../../packages/datasources/bigquery
       '@evidence-dev/component-utilities':
-        specifier: workspace:@yolean/evidence-component-utilities@*
+        specifier: workspace:@yolean/evidence-component-utilities@^
         version: link:../../packages/lib/component-utilities
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/databricks':
-        specifier: workspace:@yolean/evidence-databricks@*
+        specifier: workspace:@yolean/evidence-databricks@^
         version: link:../../packages/datasources/databricks
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/mssql':
-        specifier: workspace:@yolean/evidence-mssql@*
+        specifier: workspace:@yolean/evidence-mssql@^
         version: link:../../packages/datasources/mssql
       '@evidence-dev/mysql':
-        specifier: workspace:@yolean/evidence-mysql@*
+        specifier: workspace:@yolean/evidence-mysql@^
         version: link:../../packages/datasources/mysql
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../../packages/datasources/postgres
       '@evidence-dev/preprocess':
-        specifier: workspace:@yolean/evidence-preprocess@*
+        specifier: workspace:@yolean/evidence-preprocess@^
         version: link:../../packages/lib/preprocess
       '@evidence-dev/sdk':
-        specifier: workspace:@yolean/evidence-sdk@*
+        specifier: workspace:@yolean/evidence-sdk@^
         version: link:../../packages/lib/sdk
       '@evidence-dev/snowflake':
-        specifier: workspace:@yolean/evidence-snowflake@*
+        specifier: workspace:@yolean/evidence-snowflake@^
         version: link:../../packages/datasources/snowflake
       '@evidence-dev/sqlite':
-        specifier: workspace:@yolean/evidence-sqlite@*
+        specifier: workspace:@yolean/evidence-sqlite@^
         version: link:../../packages/datasources/sqlite
       '@evidence-dev/tailwind':
-        specifier: workspace:@yolean/evidence-tailwind@*
+        specifier: workspace:@yolean/evidence-tailwind@^
         version: link:../../packages/ui/tailwind
       '@evidence-dev/telemetry':
-        specifier: workspace:@yolean/evidence-telemetry@*
+        specifier: workspace:@yolean/evidence-telemetry@^
         version: link:../../packages/lib/telemetry
       '@evidence-dev/trino':
-        specifier: workspace:@yolean/evidence-trino@*
+        specifier: workspace:@yolean/evidence-trino@^
         version: link:../../packages/datasources/trino
       '@evidence-dev/universal-sql':
-        specifier: workspace:@yolean/evidence-universal-sql@*
+        specifier: workspace:@yolean/evidence-universal-sql@^
         version: link:../../packages/lib/universal-sql
       '@fontsource/spectral':
         specifier: ^5.0.3
@@ -1995,22 +1995,22 @@ importers:
   sites/test-env:
     dependencies:
       '@evidence-dev/component-utilities':
-        specifier: workspace:@yolean/evidence-component-utilities@*
+        specifier: workspace:@yolean/evidence-component-utilities@^
         version: link:../../packages/lib/component-utilities
       '@evidence-dev/core-components':
-        specifier: workspace:@yolean/evidence-core-components@*
+        specifier: workspace:@yolean/evidence-core-components@^
         version: link:../../packages/ui/core-components
       '@evidence-dev/csv':
-        specifier: workspace:@yolean/evidence-csv@*
+        specifier: workspace:@yolean/evidence-csv@^
         version: link:../../packages/datasources/csv
       '@evidence-dev/duckdb':
-        specifier: workspace:@yolean/evidence-duckdb@*
+        specifier: workspace:@yolean/evidence-duckdb@^
         version: link:../../packages/datasources/duckdb
       '@evidence-dev/evidence':
-        specifier: workspace:@yolean/evidence@*
+        specifier: workspace:@yolean/evidence@^
         version: link:../../packages/evidence
       '@evidence-dev/faker-datasource':
-        specifier: workspace:@yolean/evidence-faker-datasource@*
+        specifier: workspace:@yolean/evidence-faker-datasource@^
         version: link:../../packages/datasources/faker
       '@evidence-dev/motherduck':
         specifier: workspace:@yolean/evidence-motherduck@^
@@ -2019,22 +2019,22 @@ importers:
         specifier: workspace:@yolean/evidence-mssql@^
         version: link:../../packages/datasources/mssql
       '@evidence-dev/postgres':
-        specifier: workspace:@yolean/evidence-postgres@*
+        specifier: workspace:@yolean/evidence-postgres@^
         version: link:../../packages/datasources/postgres
       '@evidence-dev/sdk':
-        specifier: workspace:@yolean/evidence-sdk@*
+        specifier: workspace:@yolean/evidence-sdk@^
         version: link:../../packages/lib/sdk
       '@evidence-dev/snowflake':
-        specifier: workspace:@yolean/evidence-snowflake@*
+        specifier: workspace:@yolean/evidence-snowflake@^
         version: link:../../packages/datasources/snowflake
       '@evidence-dev/source-javascript':
-        specifier: workspace:@yolean/evidence-source-javascript@*
+        specifier: workspace:@yolean/evidence-source-javascript@^
         version: link:../../packages/datasources/javascript
       '@evidence-dev/sqlite':
-        specifier: workspace:@yolean/evidence-sqlite@*
+        specifier: workspace:@yolean/evidence-sqlite@^
         version: link:../../packages/datasources/sqlite
       '@evidence-dev/tailwind':
-        specifier: workspace:@yolean/evidence-tailwind@*
+        specifier: workspace:@yolean/evidence-tailwind@^
         version: link:../../packages/ui/tailwind
     devDependencies:
       cross-env:

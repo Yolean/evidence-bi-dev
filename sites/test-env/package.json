@@ -15,20 +15,20 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@evidence-dev/component-utilities": "workspace:@yolean/evidence-component-utilities@*",
-		"@evidence-dev/core-components": "workspace:@yolean/evidence-core-components@*",
-		"@evidence-dev/csv": "workspace:@yolean/evidence-csv@*",
-		"@evidence-dev/duckdb": "workspace:@yolean/evidence-duckdb@*",
-		"@evidence-dev/evidence": "workspace:@yolean/evidence@*",
-		"@evidence-dev/faker-datasource": "workspace:@yolean/evidence-faker-datasource@*",
+		"@evidence-dev/component-utilities": "workspace:@yolean/evidence-component-utilities@^",
+		"@evidence-dev/core-components": "workspace:@yolean/evidence-core-components@^",
+		"@evidence-dev/csv": "workspace:@yolean/evidence-csv@^",
+		"@evidence-dev/duckdb": "workspace:@yolean/evidence-duckdb@^",
+		"@evidence-dev/evidence": "workspace:@yolean/evidence@^",
+		"@evidence-dev/faker-datasource": "workspace:@yolean/evidence-faker-datasource@^",
 		"@evidence-dev/motherduck": "workspace:@yolean/evidence-motherduck@^",
 		"@evidence-dev/mssql": "workspace:@yolean/evidence-mssql@^",
-		"@evidence-dev/postgres": "workspace:@yolean/evidence-postgres@*",
-		"@evidence-dev/sdk": "workspace:@yolean/evidence-sdk@*",
-		"@evidence-dev/snowflake": "workspace:@yolean/evidence-snowflake@*",
-		"@evidence-dev/sqlite": "workspace:@yolean/evidence-sqlite@*",
-		"@evidence-dev/tailwind": "workspace:@yolean/evidence-tailwind@*",
-		"@evidence-dev/source-javascript": "workspace:@yolean/evidence-source-javascript@*"
+		"@evidence-dev/postgres": "workspace:@yolean/evidence-postgres@^",
+		"@evidence-dev/sdk": "workspace:@yolean/evidence-sdk@^",
+		"@evidence-dev/snowflake": "workspace:@yolean/evidence-snowflake@^",
+		"@evidence-dev/sqlite": "workspace:@yolean/evidence-sqlite@^",
+		"@evidence-dev/tailwind": "workspace:@yolean/evidence-tailwind@^",
+		"@evidence-dev/source-javascript": "workspace:@yolean/evidence-source-javascript@^"
 	},
 	"devDependencies": {
 		"cross-env": "^7.0.3"

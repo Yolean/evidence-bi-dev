@@ -9,7 +9,7 @@
 		"test": "uvu test test.js"
 	},
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@^",
 		"@google-cloud/bigquery": "6.2.0",
 		"fs-extra": "11.2.0",
 		"google-auth-library": "^9.6.3"

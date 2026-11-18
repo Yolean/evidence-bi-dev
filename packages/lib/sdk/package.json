@@ -99,7 +99,7 @@
 		"@clack/prompts": "^0.7.0",
 		"@evidence-dev/icons": "workspace:@yolean/evidence-icons@^",
 		"@evidence-dev/telemetry": "workspace:@yolean/evidence-telemetry@^",
-		"@evidence-dev/universal-sql": "workspace:@yolean/evidence-universal-sql@*",
+		"@evidence-dev/universal-sql": "workspace:@yolean/evidence-universal-sql@^",
 		"@steeze-ui/simple-icons": "^1.7.1",
 		"@steeze-ui/tabler-icons": "^2.1.1",
 		"@types/estree": "^1.0.5",
@@ -151,7 +151,7 @@
 		"typescript": "^5.3.3"
 	},
 	"peerDependencies": {
-		"@evidence-dev/universal-sql": "workspace:@yolean/evidence-universal-sql@*",
+		"@evidence-dev/universal-sql": "workspace:@yolean/evidence-universal-sql@^",
 		"nanoid": "3.3.8",
 		"perfect-debounce": "^1.0.0",
 		"svelte": "^5.46.4"

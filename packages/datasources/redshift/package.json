@@ -6,8 +6,8 @@
 	"author": "Archie Wood",
 	"license": "MIT",
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
-		"@evidence-dev/postgres": "workspace:@yolean/evidence-postgres@*"
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@^",
+		"@evidence-dev/postgres": "workspace:@yolean/evidence-postgres@^"
 	},
 	"type": "module",
 	"evidence": {

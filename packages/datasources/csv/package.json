@@ -9,8 +9,8 @@
 		"test": "uvu test test.js"
 	},
 	"dependencies": {
-		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@*",
-		"@evidence-dev/duckdb": "workspace:@yolean/evidence-duckdb@*"
+		"@evidence-dev/db-commons": "workspace:@yolean/evidence-db-commons@^",
+		"@evidence-dev/duckdb": "workspace:@yolean/evidence-duckdb@^"
 	},
 	"devDependencies": {
 		"dotenv": "^16.0.1"
