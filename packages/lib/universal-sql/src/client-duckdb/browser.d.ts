@@ -34,6 +34,13 @@ export function setParquetURLs(
 ): Promise<void>;
 
 /**
+ * Sets the time zone of the queries that follow: current_date, timestamptz values and the strings
+ * compared to them are in this zone, and timestamptz results are its wall-clock time
+ * @param zone an IANA zone, or null for UTC
+ */
+export function setTimeZone(zone: string | null): Promise<void>;
+
+/**
  * Converts an Apache Arrow table to a Javascript array.
  * @param {import("apache-arrow").Table} table
  * @returns {any[]}

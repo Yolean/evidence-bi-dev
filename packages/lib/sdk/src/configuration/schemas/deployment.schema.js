@@ -14,5 +14,11 @@ export const DeploymentConfigSchema = z.object({
 		.optional()
 		.refine((value) => !value || /^[A-Za-z_][A-Za-z0-9_]*$/.test(value), {
 			message: 'dataScope must be a route parameter name'
-		})
+		}),
+	// The IANA time zone page queries run in: current_date, timestamptz values and the strings
+	// compared to them; UTC if not set
+	timeZone: z.string().optional(),
+	// SQL giving a data scope's time zone in its first column, ${scope} being the scope as a
+	// string literal; pages whose scope it gives no zone for use timeZone
+	timeZoneQuery: z.string().optional()
 });

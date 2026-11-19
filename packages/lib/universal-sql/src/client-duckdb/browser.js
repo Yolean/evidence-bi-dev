@@ -1,9 +1,9 @@
 import { arrowTableToJSON, getPromise, withTimeout } from './both.js';
 import {
 	AsyncDuckDB,
+	checkPlatformSupport,
 	ConsoleLogger,
 	DuckDBDataProtocol,
-	getPlatformFeatures,
 	VoidLogger
 } from '@duckdb/duckdb-wasm';
 
@@ -35,19 +35,13 @@ export async function initDB() {
 	// to initialize the database
 	initializing = true;
 	try {
-		const useEh = await getPlatformFeatures().then((x) => x.wasmExceptions);
-
-		const DUCKDB_CONFIG = useEh
-			? {
-					mainModule: (await import('@duckdb/duckdb-wasm/dist/duckdb-eh.wasm?url')).default,
-					mainWorker: (await import('@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js?worker'))
-						.default
-				}
-			: {
-					mainModule: (await import('@duckdb/duckdb-wasm/dist/duckdb-mvp.wasm?url')).default,
-					mainWorker: (await import('@duckdb/duckdb-wasm/dist/duckdb-browser-mvp.worker.js?worker'))
-						.default
-				};
+		// duckdb-wasm 1.33 has one single-threaded bundle, which needs WebAssembly exceptions
+		await checkPlatformSupport();
+		const DUCKDB_CONFIG = {
+			mainModule: (await import('@duckdb/duckdb-wasm/dist/duckdb-base.wasm?url')).default,
+			mainWorker: (await import('@duckdb/duckdb-wasm/dist/duckdb-browser-base.worker.js?worker'))
+				.default
+		};
 
 		const logger = import.meta.env.VITE_EVIDENCE_DEBUG ? new ConsoleLogger() : new VoidLogger();
 		const worker = new DUCKDB_CONFIG.mainWorker();
@@ -73,6 +67,13 @@ export async function initDB() {
 		await connection.query('SET ieee_floating_point_ops = false;');
 		// https://duckdb.org/2024/02/13/announcing-duckdb-0100.html#breaking-sql-changes
 		await connection.query('SET old_implicit_casting = true;');
+		// https://duckdb.org/docs/2.0/operations_manual/migration: division by zero returns NULL,
+		// and an untyped NULL is an INTEGER, as before DuckDB 2.0
+		await connection.query('SET error_on_division_by_zero = false;');
+		await connection.query('SET legacy_disable_null_type = true;');
+		// duckdb-wasm 1.33 loads its built-in icu extension on the first use of current_date and
+		// the like, and that first query fails to bind
+		await connection.query('LOAD icu;');
 
 		resolveInit();
 	} catch (e) {
@@ -143,6 +144,27 @@ export async function setParquetURLs(urls, { append, addBasePath = (x) => x } = 
 		rejectTables(e);
 		console.error(`Error encountered while updating Parquet URLs`, e);
 		throw e;
+	}
+}
+
+/** @type {string} */
+let timeZone = 'UTC';
+
+/**
+ * Sets the time zone of the queries that follow: current_date, timestamptz values and the strings
+ * compared to them are in this zone, and timestamptz results are its wall-clock time
+ * @param {string | null} zone an IANA zone, or null for UTC
+ * @returns {Promise<void>}
+ */
+export async function setTimeZone(zone) {
+	if (!db) await initDB();
+	const target = zone || 'UTC';
+	if (target === timeZone) return;
+	try {
+		await connection.query(`SET TimeZone = '${target.replaceAll("'", "''")}';`);
+		timeZone = target;
+	} catch (e) {
+		console.warn(`Time zone ${JSON.stringify(target)} not set, keeping ${timeZone}`, e);
 	}
 }
 

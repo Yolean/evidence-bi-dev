@@ -72,3 +72,23 @@ export const addScopedBasePath = (path, scope, config) => {
 		config
 	);
 };
+
+/**
+ * The SQL that gives a page's time zone: deployment.timeZoneQuery for the page's data scope, or null
+ * @param {string | null} scope
+ * @param {import("../../configuration/schemas/config.schema.js").EvidenceConfig} config
+ * @example getTimeZoneQuery('org1', config) // "select tz from orgs where slug = 'org1'"
+ * @returns {string | null}
+ */
+export const getTimeZoneQuery = (scope, config) => {
+	const sql = config.deployment.timeZoneQuery;
+	if (!sql || !scope) return null;
+	return sql.replaceAll('${scope}', `'${scope.replaceAll("'", "''")}'`);
+};
+
+/**
+ * deployment.timeZone, the zone of pages without one from deployment.timeZoneQuery, or null for UTC
+ * @param {import("../../configuration/schemas/config.schema.js").EvidenceConfig} config
+ * @returns {string | null}
+ */
+export const getDefaultTimeZone = (config) => config.deployment.timeZone || null;

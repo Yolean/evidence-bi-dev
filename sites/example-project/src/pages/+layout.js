@@ -5,17 +5,76 @@ import {
 	setParquetURLs,
 	query as usqlQuery,
 	updateSearchPath,
-	arrowTableToJSON
+	arrowTableToJSON,
+	setTimeZone
 } from '@evidence-dev/universal-sql/client-duckdb';
 import { profile } from '@evidence-dev/component-utilities/profile';
 import { toasts } from '@evidence-dev/component-utilities/stores';
 import { setTrackProxy } from '@evidence-dev/sdk/usql';
-import { addBasePath, addScopedBasePath, getDataScope } from '@evidence-dev/sdk/utils/svelte';
+import {
+	addBasePath,
+	addScopedBasePath,
+	getDataScope,
+	getDefaultTimeZone,
+	getTimeZoneQuery
+} from '@evidence-dev/sdk/utils/svelte';
 import md5 from 'blueimp-md5';
 
 export const ssr = !dev;
 export const prerender = import.meta.env.VITE_EVIDENCE_SPA !== 'true';
 export const trailingSlash = 'always';
+
+/**
+ * @param {Record<string, unknown>[] | undefined} rows
+ * @returns {string | null}
+ */
+const firstString = (rows) => {
+	const row = rows?.[0];
+	if (!row) return null;
+	const value = row[Object.keys(row)[0]];
+	return typeof value === 'string' && value ? value : null;
+};
+
+/**
+ * The browser's zone for a scope, from the scope's own data
+ * @param {string | null} scope
+ * @returns {Promise<string | null>}
+ */
+const browserTimeZone = async (scope) => {
+	const sql = getTimeZoneQuery(scope);
+	if (sql) {
+		try {
+			const zone = firstString(await usqlQuery(sql));
+			if (zone) return zone;
+		} catch (e) {
+			console.warn(`deployment.timeZoneQuery failed for ${scope}`, e);
+		}
+	}
+	return getDefaultTimeZone();
+};
+
+/** @type {Map<string | null, string | null>} */
+const server_time_zones = new Map();
+/**
+ * The server's zone for a scope, from the full data set, which has the scope's rows too
+ * @param {string | null} scope
+ * @returns {string | null}
+ */
+const serverTimeZone = (scope) => {
+	if (building && server_time_zones.has(scope)) return server_time_zones.get(scope) ?? null;
+	let zone = null;
+	const sql = getTimeZoneQuery(scope);
+	if (sql) {
+		try {
+			zone = firstString(usqlQuery(sql));
+		} catch (e) {
+			console.warn(`deployment.timeZoneQuery failed for ${scope}`, e);
+		}
+	}
+	zone = zone ?? getDefaultTimeZone();
+	server_time_zones.set(scope, zone);
+	return zone;
+};
 
 /**
  * @param {string | null} scope deployment.dataScope value; the browser loads only that scope's data
@@ -52,6 +111,13 @@ const loadDB = async (scope) => {
 	} else {
 		await profile(setParquetURLs, renderedFiles, { addBasePath: addDataPath });
 		await profile(updateSearchPath, Object.keys(renderedFiles));
+	}
+	// the server sets the zone with every query instead, as it prerenders many scopes at once
+	if (browser) {
+		const zone = Object.keys(renderedFiles ?? {}).length
+			? await browserTimeZone(scope)
+			: getDefaultTimeZone();
+		await profile(setTimeZone, zone);
 	}
 };
 
@@ -176,7 +242,8 @@ export const load = async ({ fetch, route, params, url }) => {
 				additional_hash: paramsHash,
 				query_name,
 				prerendering: building,
-				scope
+				scope,
+				time_zone: serverTimeZone(scope)
 			})
 		);
 	}

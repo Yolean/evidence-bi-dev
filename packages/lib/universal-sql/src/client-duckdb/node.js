@@ -44,13 +44,9 @@ export async function initDB() {
 
 	try {
 		const DUCKDB_BUNDLES = {
-			mvp: {
-				mainModule: resolve(DUCKDB_DIST, './duckdb-mvp.wasm'),
-				mainWorker: resolve(DUCKDB_DIST, './duckdb-node-mvp.worker.cjs')
-			},
-			eh: {
-				mainModule: resolve(DUCKDB_DIST, './duckdb-eh.wasm'),
-				mainWorker: resolve(DUCKDB_DIST, './duckdb-node-eh.worker.cjs')
+			base: {
+				mainModule: resolve(DUCKDB_DIST, './duckdb-base.wasm'),
+				mainWorker: resolve(DUCKDB_DIST, './duckdb-node-base.worker.cjs')
 			}
 		};
 		const logger = process.env.VITE_EVIDENCE_DEBUG ? new ConsoleLogger() : new VoidLogger();
@@ -72,6 +68,13 @@ export async function initDB() {
 		await connection.query('SET ieee_floating_point_ops = false;');
 		// https://duckdb.org/2024/02/13/announcing-duckdb-0100.html#breaking-sql-changes
 		await connection.query('SET old_implicit_casting = true;');
+		// https://duckdb.org/docs/2.0/operations_manual/migration: division by zero returns NULL,
+		// and an untyped NULL is an INTEGER, as before DuckDB 2.0
+		await connection.query('SET error_on_division_by_zero = false;');
+		await connection.query('SET legacy_disable_null_type = true;');
+		// duckdb-wasm 1.33 loads its built-in icu extension on the first use of current_date and
+		// the like, and that first query fails to bind
+		await connection.query('LOAD icu;');
 
 		resolveInit();
 	} catch (e) {
@@ -134,14 +137,36 @@ export async function setParquetURLs(urls, append = false) {
 	}
 }
 
+/** @type {string} */
+let timeZone = 'UTC';
+
+/**
+ * Sets the time zone of the queries that follow: current_date, timestamptz values and the strings
+ * compared to them are in this zone, and timestamptz results are its wall-clock time
+ * @param {string | null} zone an IANA zone, or null for UTC
+ * @returns {void}
+ */
+export function setTimeZone(zone) {
+	const target = zone || 'UTC';
+	if (target === timeZone) return;
+	try {
+		connection.query(`SET TimeZone = '${target.replaceAll("'", "''")}';`);
+		timeZone = target;
+	} catch (e) {
+		console.warn(`Time zone ${JSON.stringify(target)} not set, keeping ${timeZone}: ${e.message}`);
+	}
+}
+
 /**
  * Queries the database with the given SQL statement.
  *
  * @param {string} sql
- * @param {Parameters<typeof cache_for_hash>[2]} [cache_options]
+ * @param {Parameters<typeof cache_for_hash>[2] & { time_zone: string | null }} [cache_options]
  * @returns {Record<string, unknown>[]}
  */
 export function query(sql, cache_options) {
+	// prerendering interleaves pages of different scopes, so the zone is set right before each query
+	if (cache_options) setTimeZone(cache_options.time_zone);
 	let result;
 
 	// only cache during build, because

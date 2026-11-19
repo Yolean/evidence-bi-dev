@@ -23,7 +23,13 @@ export function updateSearchPath(schemas): Promise<void>;
  */
 export function query(
 	sql: string,
-	cache_options?: { route_hash: string; query_name: string; prerendering: boolean }
+	cache_options?: {
+		route_hash: string;
+		query_name: string;
+		prerendering: boolean;
+		scope?: string | null;
+		time_zone: string | null;
+	}
 ): Record<string, unknown>[];
 
 /**
@@ -34,6 +40,13 @@ export function query(
  * @returns {void}
  */
 export function setParquetURLs(urls: Record<string, string[]>, append?: boolean): void;
+
+/**
+ * Sets the time zone of the queries that follow: current_date, timestamptz values and the strings
+ * compared to them are in this zone, and timestamptz results are its wall-clock time
+ * @param zone an IANA zone, or null for UTC
+ */
+export function setTimeZone(zone: string | null): void;
 
 /**
  * Converts an Apache Arrow table to a Javascript array.

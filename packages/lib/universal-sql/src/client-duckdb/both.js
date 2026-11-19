@@ -13,6 +13,7 @@ function apacheToEvidenceType(type) {
 			return 'date';
 		case Type.Float:
 		case Type.Int:
+		case Type.Decimal:
 			return 'number';
 		case Type.Bool:
 			return 'boolean';
@@ -29,7 +30,7 @@ function apacheToEvidenceType(type) {
  */
 export function arrowTableToJSON(table) {
 	if (table == null) return [];
-	const arr = table.toArray();
+	const arr = decimalsToNumbers(table, table.toArray());
 
 	Object.defineProperty(arr, '_evidenceColumnTypes', {
 		enumerable: false,
@@ -53,6 +54,28 @@ export function arrowTableToJSON(table) {
 	}
 
 	return arr;
+}
+
+/**
+ * duckdb-wasm 1.33 returns HUGEINT and UHUGEINT as Decimal(38,0) despite castBigIntToDouble,
+ * where earlier versions returned doubles; SUM of integers is a HUGEINT.
+ * Rows with decimals become plain objects, because setting a number on a row writes it to the vector.
+ * @param {import("apache-arrow").Table} table
+ * @param {any[]} arr
+ * @returns {any[]}
+ */
+function decimalsToNumbers(table, arr) {
+	const decimal_cols = table.schema.fields.filter((field) => field.type.typeId === Type.Decimal);
+	if (!decimal_cols.length) return arr;
+	return arr.map((row) => {
+		const obj = row.toJSON();
+		for (const col of decimal_cols) {
+			const value = obj[col.name];
+			// String() keeps values beyond Number.MAX_SAFE_INTEGER, which Number() refuses
+			obj[col.name] = value == null ? null : Number(String(value)) / 10 ** col.type.scale;
+		}
+		return obj;
+	});
 }
 
 /**
