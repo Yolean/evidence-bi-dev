@@ -28,9 +28,18 @@ for (const file of files) {
 		fs.readdirSync(out).find((f) => f.endsWith('.tgz'))
 	);
 	console.log(`Publishing ${pkg.name}@${pkg.version} with npm to cache 2FA`);
-	execFileSync('npm', ['publish', tgz, '--access', 'public', ...(dryRun ? ['--dry-run'] : [])], {
-		stdio: 'inherit'
-	});
+	const published = spawnSync(
+		'npm',
+		['publish', tgz, '--access', 'public', ...(dryRun ? ['--dry-run'] : [])],
+		{ stdio: 'inherit' }
+	);
+	if (published.status !== 0) {
+		// npm reports a missing login or missing publish rights on the scope as E404
+		console.error(
+			`npm publish of ${pkg.name}@${pkg.version} failed. An E404 means npm doesn't accept this user for @yolean: check \`npm whoami\` and the user's access to the scope.`
+		);
+		process.exit(1);
+	}
 	// the registry's CDN can answer 404 for minutes after a publish, and changeset publish
 	// would then try this version again and fail
 	if (!dryRun) {

@@ -73,9 +73,9 @@
 		"vite": "8.3.8"
 	},
 	"scripts": {
-		"release": "run-s package:core-components build:evidence release:otp-cache && pnpm changeset publish && node scripts/release-verify.mjs",
+		"release": "node scripts/release-preflight.mjs && run-s package:core-components build:evidence release:otp-cache && pnpm changeset publish && node scripts/release-verify.mjs",
 		"release:otp-cache": "node scripts/release-otp-cache.mjs",
-		"release:version": "node scripts/changeset-check.mjs && changeset version && prettier --write --log-level warn 'packages/**/CHANGELOG.md'",
+		"release:version": "node scripts/release-version.mjs",
 		"test": "pnpm -r test && pnpm -r test:unit",
 		"test:component-utilities:watch": "pnpm --filter ./packages/lib/component-utilities test:watch",
 		"postinstall": "run-s build:preprocess package:core-components build:evidence",
