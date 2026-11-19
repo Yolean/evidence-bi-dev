@@ -75,14 +75,6 @@ export async function initDB() {
 		// duckdb-wasm 1.33 loads its built-in icu extension on the first use of current_date and
 		// the like, and that first query fails to bind
 		await connection.query('LOAD icu;');
-		// DuckDB 2.0 in wasm starts in UTC, where earlier versions took the local UTC offset
-		// for timestamptz, to_timestamp and literals compared to them
-		try {
-			const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-			if (timeZone) await connection.query(`SET TimeZone = '${timeZone.replaceAll("'", "''")}';`);
-		} catch (e) {
-			// a zone DuckDB doesn't know keeps UTC
-		}
 
 		resolveInit();
 	} catch (e) {
