@@ -376,6 +376,18 @@ test('expectedRowCount present for UNION with NULL-first-row', async () => {
 	assert.equal(expectedRowCount, 2);
 });
 
+test('division by zero and untyped NULL behave as before DuckDB 2.0', async () => {
+	const { rows, columnTypes } = await runQuery(
+		'select 7 // 0 as int_div, 7 % 0 as modulo, 1 / 0 as div, NULL as untyped'
+	);
+	const arr = await batchedAsyncGeneratorToArray(rows);
+	assert.equal({ ...arr[0] }, { int_div: null, modulo: null, div: Infinity, untyped: null });
+	assert.equal(
+		columnTypes.map((c) => c.evidenceType),
+		['number', 'number', 'number', 'number']
+	);
+});
+
 test('query batches results properly', async () => {
 	try {
 		const { rows, expectedRowCount } = await runQuery(

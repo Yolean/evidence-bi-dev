@@ -149,6 +149,10 @@ const runQuery = async (queryString, database, batchSize = 100000) => {
 		custom_user_agent: 'evidence-dev'
 	});
 	const conn = await db.connect();
+	// https://duckdb.org/docs/2.0/operations_manual/migration: integer division by zero returns
+	// NULL, and an untyped NULL is an INTEGER, as before DuckDB 2.0; initialize.sql can change them
+	await conn.run('SET error_on_division_by_zero = false;');
+	await conn.run('SET legacy_disable_null_type = true;');
 
 	if (database?.directory) {
 		const contents = await fs.readdir(database.directory);
