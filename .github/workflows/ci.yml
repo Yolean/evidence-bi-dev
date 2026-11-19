@@ -28,3 +28,6 @@ jobs:
           done
           # mock-fs doesn't work on Node 26
           pnpm --filter ./packages/lib/preprocess exec vitest run --exclude src/partials/inject-partials.spec.js
+          # build-parquet.spec.js uses mock-fs too
+          pnpm --filter ./packages/lib/universal-sql exec vitest run src/client-duckdb
+          pnpm --filter ./packages/datasources/duckdb test
