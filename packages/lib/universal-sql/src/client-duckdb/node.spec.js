@@ -14,6 +14,13 @@ describe('client-duckdb/node', () => {
 		expect(row.v).toMatch(/^v2\./);
 	});
 
+	// before any other query that uses current_date, which would load icu
+	it('binds date arithmetic with current_date in the first query that uses it', () => {
+		const [row] = query("select current_date - 90 as d, date_trunc('week', current_date) as w");
+		expect(row.d).toBeInstanceOf(Date);
+		expect(row.w).toBeInstanceOf(Date);
+	});
+
 	it('returns HUGEINT, such as SUM of integers, as numbers', () => {
 		const rows = query(
 			'select sum(x) as s, 170141183460469231731687303715884105727::hugeint as mx, 5::uhugeint as u, null::hugeint as n from (values (1), (2)) t(x)'

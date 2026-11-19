@@ -71,6 +71,9 @@ export async function initDB() {
 		// and an untyped NULL is an INTEGER, as before DuckDB 2.0
 		await connection.query('SET error_on_division_by_zero = false;');
 		await connection.query('SET legacy_disable_null_type = true;');
+		// duckdb-wasm 1.33 loads its built-in icu extension on the first use of current_date and
+		// the like, and that first query fails to bind
+		await connection.query('LOAD icu;');
 
 		resolveInit();
 	} catch (e) {
