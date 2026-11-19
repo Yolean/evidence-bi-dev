@@ -106,3 +106,26 @@ describe('data scope', () => {
 		expect(addScopedBasePath('/data/manifest.json', null, scoped)).toBe('/base/data/manifest.json');
 	});
 });
+
+import { getDefaultTimeZone, getTimeZoneQuery } from './addBasePath.js';
+describe('time zone', () => {
+	const zoned = {
+		deployment: {
+			dataScope: 'orgslug',
+			timeZone: 'Europe/Stockholm',
+			timeZoneQuery: 'select tz from orgs where slug = ${scope}'
+		}
+	};
+	it('queries the zone of a scope, with the scope as a string literal', () => {
+		expect(getTimeZoneQuery('org1', zoned)).toBe("select tz from orgs where slug = 'org1'");
+		expect(getTimeZoneQuery("o'1", zoned)).toBe("select tz from orgs where slug = 'o''1'");
+	});
+	it('has no query for pages without a scope, or without timeZoneQuery', () => {
+		expect(getTimeZoneQuery(null, zoned)).toBe(null);
+		expect(getTimeZoneQuery('org1', { deployment: {} })).toBe(null);
+	});
+	it('defaults to timeZone, or null for UTC', () => {
+		expect(getDefaultTimeZone(zoned)).toBe('Europe/Stockholm');
+		expect(getDefaultTimeZone({ deployment: {} })).toBe(null);
+	});
+});
