@@ -21,6 +21,11 @@ describe('client-duckdb/node', () => {
 		expect(row.w).toBeInstanceOf(Date);
 	});
 
+	it('uses the local time zone, like DuckDB before 2.0', () => {
+		const [row] = query("select current_setting('TimeZone') as tz");
+		expect(row.tz).toBe(Intl.DateTimeFormat().resolvedOptions().timeZone);
+	});
+
 	it('returns HUGEINT, such as SUM of integers, as numbers', () => {
 		const rows = query(
 			'select sum(x) as s, 170141183460469231731687303715884105727::hugeint as mx, 5::uhugeint as u, null::hugeint as n from (values (1), (2)) t(x)'
