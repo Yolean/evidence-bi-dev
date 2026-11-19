@@ -197,6 +197,9 @@ importers:
       '@changesets/cli':
         specifier: 2.21.0
         version: 2.21.0
+      '@changesets/read':
+        specifier: 0.5.9
+        version: 0.5.9
       '@duckdb/duckdb-wasm':
         specifier: 1.33.1-dev118.0
         version: 1.33.1-dev118.0

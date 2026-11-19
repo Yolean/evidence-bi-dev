@@ -21,6 +21,7 @@ jobs:
       # postinstall builds preprocess, core-components and the evidence template
       - run: pnpm install --frozen-lockfile
       - run: pnpm run lint
+      - run: pnpm run changeset:check
       - name: Unit tests
         run: |
           for p in lib/sdk lib/component-utilities ui/tailwind ui/core-components datasources/javascript; do

@@ -1,6 +1,7 @@
 {
 	"devDependencies": {
 		"@changesets/cli": "2.21.0",
+		"@changesets/read": "0.5.9",
 		"@duckdb/duckdb-wasm": "1.33.1-dev118.0",
 		"@evidence-dev/bigquery": "link:packages/datasources/bigquery",
 		"@evidence-dev/component-utilities": "link:packages/lib/component-utilities",
@@ -32,9 +33,9 @@
 		"@sveltejs/adapter-static": "3.0.11",
 		"@sveltejs/kit": "2.70.4",
 		"@sveltejs/vite-plugin-svelte": "7.3.1",
-		"autoprefixer": "^10.4.20",
 		"@tidyjs/tidy": "2.5.2",
 		"@uwdata/mosaic-sql": "^0.4.0",
+		"autoprefixer": "^10.4.20",
 		"blueimp-md5": "2.19.0",
 		"chroma-js": "^2.4.2",
 		"debounce": "^1.2.1",
@@ -72,9 +73,9 @@
 		"vite": "8.3.8"
 	},
 	"scripts": {
-		"release": "run-s package:core-components build:evidence release:otp-cache && pnpm changeset publish",
+		"release": "run-s package:core-components build:evidence release:otp-cache && pnpm changeset publish && node scripts/release-verify.mjs",
 		"release:otp-cache": "node scripts/release-otp-cache.mjs",
-		"release:version": "changeset version && prettier --write --log-level warn 'packages/**/CHANGELOG.md'",
+		"release:version": "node scripts/changeset-check.mjs && changeset version && prettier --write --log-level warn 'packages/**/CHANGELOG.md'",
 		"test": "pnpm -r test && pnpm -r test:unit",
 		"test:component-utilities:watch": "pnpm --filter ./packages/lib/component-utilities test:watch",
 		"postinstall": "run-s build:preprocess package:core-components build:evidence",
@@ -100,7 +101,8 @@
 		"package:evidence": "pnpm --filter ./packages/evidence package",
 		"build:evidence": "pnpm --filter ./packages/evidence build",
 		"build:preprocess": "pnpm --filter ./packages/lib/preprocess build",
-		"sources:core-components": "pnpm --filter ./packages/ui/core-components sources"
+		"sources:core-components": "pnpm --filter ./packages/ui/core-components sources",
+		"changeset:check": "node scripts/changeset-check.mjs"
 	},
 	"packageManager": "pnpm@12.16.1"
 }
