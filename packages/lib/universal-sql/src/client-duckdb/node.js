@@ -137,14 +137,36 @@ export async function setParquetURLs(urls, append = false) {
 	}
 }
 
+/** @type {string} */
+let timeZone = 'UTC';
+
+/**
+ * Sets the time zone of the queries that follow: current_date, timestamptz values and the strings
+ * compared to them are in this zone, and timestamptz results are its wall-clock time
+ * @param {string | null} zone an IANA zone, or null for UTC
+ * @returns {void}
+ */
+export function setTimeZone(zone) {
+	const target = zone || 'UTC';
+	if (target === timeZone) return;
+	try {
+		connection.query(`SET TimeZone = '${target.replaceAll("'", "''")}';`);
+		timeZone = target;
+	} catch (e) {
+		console.warn(`Time zone ${JSON.stringify(target)} not set, keeping ${timeZone}: ${e.message}`);
+	}
+}
+
 /**
  * Queries the database with the given SQL statement.
  *
  * @param {string} sql
- * @param {Parameters<typeof cache_for_hash>[2]} [cache_options]
+ * @param {Parameters<typeof cache_for_hash>[2] & { time_zone: string | null }} [cache_options]
  * @returns {Record<string, unknown>[]}
  */
 export function query(sql, cache_options) {
+	// prerendering interleaves pages of different scopes, so the zone is set right before each query
+	if (cache_options) setTimeZone(cache_options.time_zone);
 	let result;
 
 	// only cache during build, because

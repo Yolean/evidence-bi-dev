@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { initDB, query } from './node.js';
+import { initDB, query, setTimeZone } from './node.js';
 
 const columnTypes = (rows) =>
 	Object.fromEntries(rows._evidenceColumnTypes.map((c) => [c.name, c.evidenceType]));
@@ -42,5 +42,60 @@ describe('client-duckdb/node', () => {
 	it('types an untyped NULL as a number, as before DuckDB 2.0', () => {
 		const rows = query('select null as x');
 		expect(columnTypes(rows)).toEqual({ x: 'number' });
+	});
+
+	describe('time zone', () => {
+		// 2026-08-21T00:00Z in summer time, 2026-01-01T00:00Z in winter time, 2026-11-17T23:30Z
+		const AUGUST = 1787270400;
+		const JANUARY = 1767225600;
+		const NOVEMBER_LATE = 1794958200;
+
+		/** @param {string | null} zone */
+		const inZone = (zone) => {
+			setTimeZone(zone);
+			const [row] = query(
+				`select current_setting('TimeZone') as tz, to_timestamp(${AUGUST}) as aug, to_timestamp(${JANUARY}) as jan,` +
+					` timestamp '2026-08-21 00:00:00' as naive,` +
+					` to_timestamp(${NOVEMBER_LATE}) between '2026-11-01' and '2026-11-18' as in_range`
+			);
+			return {
+				tz: row.tz,
+				aug: row.aug.toISOString(),
+				jan: row.jan.toISOString(),
+				naive: row.naive.toISOString(),
+				in_range: row.in_range
+			};
+		};
+
+		it('returns timestamptz as wall-clock time in the zone, which formatting reads as UTC', () => {
+			expect(inZone('Europe/Stockholm')).toMatchObject({
+				aug: '2026-08-21T02:00:00.000Z',
+				jan: '2026-01-01T01:00:00.000Z'
+			});
+			expect(inZone('America/New_York')).toMatchObject({
+				aug: '2026-08-20T20:00:00.000Z',
+				jan: '2025-12-31T19:00:00.000Z'
+			});
+		});
+
+		it('leaves timestamps without a zone as they are', () => {
+			for (const zone of ['Europe/Stockholm', 'America/New_York', null]) {
+				expect(inZone(zone).naive).toBe('2026-08-21T00:00:00.000Z');
+			}
+		});
+
+		it('compares a date string to a timestamptz at midnight in the zone', () => {
+			// 2026-11-17T23:30Z is 00:30 on the 18th in Stockholm, after the range ends
+			expect(inZone('Europe/Stockholm').in_range).toBe(false);
+			expect(inZone('America/New_York').in_range).toBe(true);
+			expect(inZone(null).in_range).toBe(true);
+		});
+
+		it('is UTC for null, and keeps the zone it has for one DuckDB does not know', () => {
+			expect(inZone(null)).toMatchObject({ tz: 'UTC', aug: '2026-08-21T00:00:00.000Z' });
+			expect(inZone('Europe/Stockholm').tz).toBe('Europe/Stockholm');
+			expect(inZone('Mars/Olympus_Mons').tz).toBe('Europe/Stockholm');
+			setTimeZone(null);
+		});
 	});
 });

@@ -147,6 +147,27 @@ export async function setParquetURLs(urls, { append, addBasePath = (x) => x } = 
 	}
 }
 
+/** @type {string} */
+let timeZone = 'UTC';
+
+/**
+ * Sets the time zone of the queries that follow: current_date, timestamptz values and the strings
+ * compared to them are in this zone, and timestamptz results are its wall-clock time
+ * @param {string | null} zone an IANA zone, or null for UTC
+ * @returns {Promise<void>}
+ */
+export async function setTimeZone(zone) {
+	if (!db) await initDB();
+	const target = zone || 'UTC';
+	if (target === timeZone) return;
+	try {
+		await connection.query(`SET TimeZone = '${target.replaceAll("'", "''")}';`);
+		timeZone = target;
+	} catch (e) {
+		console.warn(`Time zone ${JSON.stringify(target)} not set, keeping ${timeZone}`, e);
+	}
+}
+
 /**
  * Queries the database with the given SQL statement.
  *
